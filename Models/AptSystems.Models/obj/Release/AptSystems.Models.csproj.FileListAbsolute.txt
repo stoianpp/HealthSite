@@ -1,0 +1,14 @@
+D:\Personal\AptSystemsTest\Models\AptSystems.Models\bin\Release\AptSystems.Models.dll.config
+D:\Personal\AptSystemsTest\Models\AptSystems.Models\bin\Release\AptSystems.Models.dll
+D:\Personal\AptSystemsTest\Models\AptSystems.Models\bin\Release\AptSystems.Models.pdb
+D:\Personal\AptSystemsTest\Models\AptSystems.Models\bin\Release\EntityFramework.dll
+D:\Personal\AptSystemsTest\Models\AptSystems.Models\bin\Release\EntityFramework.SqlServer.dll
+D:\Personal\AptSystemsTest\Models\AptSystems.Models\bin\Release\Microsoft.AspNet.Identity.Core.dll
+D:\Personal\AptSystemsTest\Models\AptSystems.Models\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Personal\AptSystemsTest\Models\AptSystems.Models\bin\Release\EntityFramework.xml
+D:\Personal\AptSystemsTest\Models\AptSystems.Models\bin\Release\EntityFramework.SqlServer.xml
+D:\Personal\AptSystemsTest\Models\AptSystems.Models\bin\Release\Microsoft.AspNet.Identity.Core.xml
+D:\Personal\AptSystemsTest\Models\AptSystems.Models\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Personal\AptSystemsTest\Models\AptSystems.Models\obj\Release\AptSystems.Models.csprojResolveAssemblyReference.cache
+D:\Personal\AptSystemsTest\Models\AptSystems.Models\obj\Release\AptSystems.Models.dll
+D:\Personal\AptSystemsTest\Models\AptSystems.Models\obj\Release\AptSystems.Models.pdb

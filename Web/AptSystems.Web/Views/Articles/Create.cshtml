@@ -1,0 +1,65 @@
+﻿@model AptSystems.Models.Article
+
+@{
+    ViewBag.Title = "Create";
+}
+<dir id="outerFormCreate">
+    @using (Html.BeginForm("Create", "Articles", null, FormMethod.Post, new { enctype = "multipart/form-data", id = "form1" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <br />
+        <fieldset class="form-group">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Title)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Title, new {id = "titleField"})
+                @Html.ValidationMessageFor(model => model.Title)
+            </div><br />
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Category)
+            </div>
+            <div class="editor-field">
+                @Html.EnumDropDownListFor(model => model.Category)
+            </div><br />
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.SubCategory)
+            </div>
+            <div class="editor-label">
+                @Html.EnumDropDownListFor(model => model.SubCategory)
+            </div><br />
+
+            <div class="editor-field">
+                @Html.TextArea("Content", new { cols = 120, rows = 10 })
+                @Html.ValidationMessageFor(model => model.Content)
+            </div><br />
+
+            <div class="editor-label">
+                <label>Изображение:</label>
+            </div>
+            <div class="editor-field">
+                <input type="file" name="PathOnServer" />
+            </div><br />
+            <p>
+                <input type="submit" value="Create" />
+            </p>
+        </fieldset>
+    }
+    <h3 id="message">@ViewBag.Message</h3>
+</dir>
+
+
+
+@section Scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        setTimeout(function () {
+            $("#message").fadeOut()
+        }, 5000)
+    </script>
+}

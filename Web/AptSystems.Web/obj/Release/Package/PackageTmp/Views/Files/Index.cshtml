@@ -1,0 +1,90 @@
+﻿@model IEnumerable< AptSystems.Models.ViewModels.FileItemViewModel>
+@using System.Linq;
+
+@{
+    var listing = new string[] { "A","B","C","D","E","F","G","H","I","J","K","L","M","N",
+                                 "O","P","Q","R","S","T","U","V","W","X","Y","Z","123","ALL"};
+ }
+
+<h2>File List</h2>
+<hr>
+   @foreach (var link in listing)
+   {
+        @Html.ActionLink(link + " ", "Index", "Files",
+                             new { filterString = link }, null)@:&nbsp;&nbsp;
+   }
+
+<hr>
+<div id="tableDiv">
+    <table id ="fileTable" class="table-striped table-bordered">
+        <tr>
+            <th width="500px">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th width="150px">
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th width="400px">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Name.Substring(item.Name.LastIndexOf("\\") + 1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<hr>
+<label>Sort by:&nbsp;</label>
+@Html.DropDownList("Fields", null, new { id = "comboBox" })&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+@Html.ActionLink("<< ", "Index", "Files", new { filterString = ViewBag.Filter }, new { id = "btnHome" })&nbsp;&nbsp;
+@Html.ActionLink(" < ", "Index", "Files", new { filterString = ViewBag.Filter, page = ((int)ViewBag.PageIndex) - 1 }, new { id = "btnPrevious" })
+&nbsp; Page @ViewBag.PageIndex &nbsp;
+@Html.ActionLink(" > ", "Index", "Files", new { filterString = ViewBag.Filter, page = ((int)ViewBag.PageIndex) + 1 }, new { id = "btnNext" })&nbsp;&nbsp;
+@Html.ActionLink(" >>", "Index", "Files", new { filterString = ViewBag.Filter, page = -1 }, new { id = "btnEnd" })    <br><br />
+
+
+@section Scripts{
+    <script>
+        $('#comboBox').change(function () {
+            if(@Model.Count() > 1){
+                var sorting = $('#comboBox').val();
+                var A="A",B="B",C="C",D="D",E="E",F="F",G="G",H="H",I="I",J="J",K="K",
+                L="L",M="M",N="N",O="O",P="P",Q="Q",R="R",S="S",T="T",U="U",V="V",
+                W="W",X="X",Y="Y",Z="Z",ALL="ALL";
+
+                $.ajax({
+                    url: 'Files/Sort',
+                    data: {
+                        page: @ViewBag.PageIndex,
+                        filter: @ViewBag.Filter,
+                        sort: sorting
+                    },
+                    success: function (response) {
+                        $("#tableDiv").html(response);
+                    }
+                });
+            }
+        });
+
+        @if (ViewBag.PageIndex == 1){
+            @:$("#btnPrevious,#btnHome").addClass("link-disable");
+        }
+        @if (Model.Count() < 10){
+            @:$("#btnNext, #btnEnd").addClass("link-disable");
+        }
+    </script>    
+}

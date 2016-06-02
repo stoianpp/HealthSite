@@ -1,0 +1,199 @@
+
+a{
+  color: #3fde59;
+}
+.header_top {
+  background-color: #f8f8f8;
+  border-bottom: 2px solid #3fde59;  
+}
+.navbar-default .navbar-nav > li > a {
+  color: #b98c13;
+  font-weight: bold
+}
+.navbar-default .navbar-nav > li > a:hover{
+  background-color: #3fde59;
+  color: #fff;
+}
+#searchIcon {
+  background-color: #3fde59;
+  color: #fff;
+}
+#searchIcon:hover{
+	opacity: 0.75;
+}
+.navbar-toggle {
+  background-color:#3fde59;
+  border-color: #3fde59;
+  
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+  background-color: #3fde59;
+  opacity: 0.75;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+.latest_newsarea {
+  border-bottom: 2px solid #3fde59;
+  border-top: 2px solid #3fde59;  
+}
+.latest_newsarea span {
+  background-color: #3fde59;
+  color: #fff;
+}
+.latest_newsarea span:after, .latest_newsarea span:before { left: 100%; top: 50%; border: solid transparent; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; } 
+.latest_newsarea span:after { border-color: rgba(0, 153, 204, 0); border-left-color: #3fde59; border-width: 10px; margin-top: -10px; } 
+.latest_newsarea span:before { border-color: rgba(0, 153, 204, 0); border-left-color: #0099cc; border-width: 11px; margin-top: -11px; }
+.news_sticker li a:before {
+  color: #3fde59;
+ }
+ .single_leftbar>h2 span{
+  background-color: #3fde59;
+}
+.recent_title:before {
+  color: #3fde59;
+}
+.right_slide{
+	background: none repeat scroll 0 0 #3fde59;  
+  	color: #fff;
+}
+.left_slide:hover,.right_slide:hover,.left_slide:focus,.right_slide:focus{
+	background-color: #fff;
+	color: #3fde59;
+}
+.carousel-indicators .active {
+  background-color: #3fde59;
+}
+.catg_title:before {
+  color: #b98c13;
+}
+.category_title a {
+  background-color: #3fde59;
+  color: #fff;
+ }
+ .category_title a:hover{
+  background-color: #3fde59;
+  color: #fff;
+  text-decoration: none;
+ }
+ .sing_commentbox > p:hover{
+ 	color: #3fde59;
+}
+.sing_commentbox>a:hover{
+	color: #3fde59;
+}
+.label_nav li a:hover{
+	background-color: #3fde59;	
+	color: #eee;	
+	border-color: #3fde59;
+}
+.single_footer_top>h2{	
+	border-bottom: 5px solid #3fde59;	
+}
+.subscribe_mail i {
+  color: #3fde59;
+}
+.submit_btn {
+  background-color: #3fde59;
+  color: #ffffff;
+}
+.submit_btn:hover,.send_btn:hover{
+	background-color: #0ebcf6;
+	color: #eee;
+}
+.footer_labels li a:hover,.footer_labels li a:focus{
+	background-color: #3fde59;
+}
+.send_btn{
+	background-color: #3fde59 !important;
+	color: #ffffff;
+}
+.send_btn:hover{
+	background-color: #0ebcf6 !important;
+	color: #eee;
+}
+.tooltip-inner{
+	border-bottom: 3px solid #3fde59;
+}
+.tooltip.top .tooltip-arrow{    
+    border-left:5px solid transparent;
+    border-right:5px solid transparent;
+    border-top:5px solid #3fde59;
+}
+.scrollToTop {
+  background: none repeat scroll 0 0 #3fde59;
+  border: 1px solid #FFFFFF;
+  color: #FFFFFF;
+  border-radius: 5px;
+ }
+ .scrollToTop:hover, .scrollToTop:focus{
+  background-color: #fff;
+  border-color: #3fde59;
+  color: #3fde59 !important;
+ }
+ .link_nav li a{
+	color: #3fde59;
+}
+.link_nav li a:before {
+	color: #3fde59;
+}
+.read_more {
+  background-color: #3fde59;
+  color: #fff;
+}
+.read_more:hover,.read_more:focus{
+  color: #fff;
+  background-color: #111;
+}
+.author_name:hover,.author_name:focus,.post_date:hover,.post_date:focus{  
+  color: #3fde59;
+}
+.single_post_area .author_name,.single_post_area .post_date{
+  color: #3fde59;  
+}
+.single_post_area .author_name:hover,.single_post_area .post_date:hover{
+  color: #444;
+}
+.single_post_area .author_name i,.post_date i{
+  color: #252525;
+}
+.post_title {
+  border-color: #3fde59;
+  color: #555;
+}
+.related_post> h2 i{
+  color: #3fde59;
+}
+.single_post_content ul li:before {
+  color: #3fde59;
+}
+.custom-tabs {
+  background: none repeat scroll 0 0 #3fde59;  
+}
+.custom-tabs > li > a:hover{
+  background-color: #3fde59;
+  color: #fff;
+}
+.custom-tabs  > li.active > a, .custom-tabs  > li.active > a:hover, .custom-tabs  > li.active > a:focus {  
+  border-top: 3px solid #3fde59;  
+}
+.left_slide {
+  background: none repeat scroll 0 0 #3fde59;
+}
+.footer_top{
+  border-top: 5px solid #3fde59;
+}
+.slick-prev, .slick-next {
+  background: none repeat scroll 0 0 #3fde59;  
+  color: #fff;
+}
+.slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
+ background: #fff; 
+ color: #3fde59 !important;
+}
+.single_post_content blockquote{
+  border-color: #3fde59;
+}
+.error_content a:hover{  
+  background-color: #3fde59;
+}

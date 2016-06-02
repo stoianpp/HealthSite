@@ -1,0 +1,61 @@
+﻿@model AptSystems.Models.FileItem
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm("Create", "Files", null, FormMethod.Post, new { enctype = "multipart/form-data", id="form1" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <br />
+    <fieldset class="form-group">
+        <legend>File Upload</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FileName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FileName)
+            @Html.ValidationMessageFor(model => model.FileName)
+        </div><br />
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Category)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Category)
+            @Html.ValidationMessageFor(model => model.Category)
+        </div><br />
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+        </div><br />
+
+        <div class="editor-label">
+            <label>Browse:</label>
+        </div>
+        <div class="editor-field">
+            <input type="file" name="PathOnServer" />
+        </div><br />
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<h3 id="message">@ViewBag.Message</h3>
+
+@section Scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        setTimeout(function () {
+            $("#message").fadeOut()
+        }, 3000)
+    </script>
+}

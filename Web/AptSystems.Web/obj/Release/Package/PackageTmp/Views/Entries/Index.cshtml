@@ -1,0 +1,52 @@
+﻿@model List<List<AptSystems.Web.Models.MailViewModel>>
+
+@{
+    ViewBag.Title = "Task 1";
+}
+
+<div class="jumbotron">
+    <h1>AptSystems Test</h1>
+    <p class="lead">First task execution</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4 my-cols">
+        <h2>Query 1</h2>
+        <p>
+            First query report
+        </p>
+        <h5>Report count = @Model[0].Count()</h5>
+        <ul>
+            @foreach (var mail in Model[0].Take(20))
+            {
+                <li>@mail.Email @mail.Count</li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-4 my-cols">
+        <h2>Query 2</h2>
+        <p>
+            Second query report
+        </p>
+        <h5>Report count = @Model[1].Count()</h5>
+        <ul>
+            @foreach (var mail in Model[1].Take(20))
+            {
+                <li>@mail.Email @mail.Date</li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-3 my-cols">
+        <h2>Query 3</h2>
+        <p>
+            Third query report
+        </p>
+        <h5>Report count = @Model[2].Count()</h5>
+        <ul>
+            @foreach (var mail in Model[2].Take(20))
+            {
+                <li>@mail.Email @mail.Date</li>
+            }
+        </ul>
+    </div>
+</div>

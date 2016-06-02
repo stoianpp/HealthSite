@@ -1,0 +1,32 @@
+﻿@model IEnumerable<AptSystems.Models.ViewModels.FileItemViewModel>
+
+<table id="fileTable" class="table-striped table-bordered">
+    <tr>
+        <th width="500px">
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th width="150px">
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th width="400px">
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Name.Substring(item.Name.LastIndexOf("\\") + 1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+        </tr>
+    }
+</table>
+
