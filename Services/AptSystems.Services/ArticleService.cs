@@ -95,14 +95,31 @@
             return article;
         }
 
+        public ArticleViewModel GetArticle(string id)
+        {
+            var article = this.repo.GetByGuidId(Guid.Parse(id));
+            var viewModel = new ArticleViewModel
+            {
+                Id = article.Id,
+                Title = article.Title,
+                Content = article.Content,
+                CreatedAt = article.CreatedAt,
+                Comments = article.Comments,
+                Image395_396 = article.Image,
+                Thumbnail70_70 = article.Tumbnail
+            };
+            return viewModel;
+        }
+
         public List<List<ArticleViewModel>> GetInitialData()
         {
             var result = new List<List<ArticleViewModel>>();
-            var health5List = repo.All()
+            var health5 = repo.All()
                                     .Where(z => z.Category == CategoryTypes.Health)
                                     .OrderByDescending(x => x.CreatedAt)
-                                    .Take(4)
-                                    .Select(y => new ArticleViewModel
+                                    .Take(4).ToList();
+
+            var health5List = health5.Select(y => new ArticleViewModel
                                     {
                                         Id = y.Id,
                                         Title = y.Title,
@@ -110,7 +127,7 @@
                                         CreatedAt = y.CreatedAt,
                                         Comments = y.Comments,
                                         Image395_396 = y.Image,
-                                        Thumbnail70_70 = y.Tumbnail
+                                        Thumbnail70_70 = y.Tumbnail,
                                     }).ToList();
 
             foreach (var item in health5List)

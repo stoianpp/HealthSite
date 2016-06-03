@@ -20,6 +20,6 @@
             return new ApplicationDbContext();
         }
 
-        
+        public System.Data.Entity.DbSet<AptSystems.Models.ViewModels.ArticleViewModel> ArticleViewModels { get; set; }
     }
 }

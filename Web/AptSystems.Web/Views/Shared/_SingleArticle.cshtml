@@ -1,0 +1,64 @@
+﻿@model AptSystems.Models.ViewModels.ArticleViewModel
+
+<div class="container">
+    <div class="col-xs-6">
+        <h1>
+            @Model.Title
+        </h1>
+        @{
+            string imageBase64 = Convert.ToBase64String(Model.Image395_396);
+            string imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+        }
+        <div class="pics">
+            <img src="@imageSrc" alt="Здравна публикация" />
+        </div><br />
+        <div class="in-text">
+            <p>@Html.Raw(Model.Content.Replace("\n", "<br/>"))</p>
+        </div>
+        <br/>
+        <p>Коментари: @Model.Comments.Count</p><br>
+        <ul style="max-height:300px; overflow-y:scroll" class="list-group">
+            @foreach (var comment in Model.Comments)
+            {
+                <li class="list-group-item">
+                    <p class="bg-success">@comment.Content</p>
+                </li>
+            }
+        </ul>
+        <div>Публикувай нов коментар</div>
+        @using (Html.BeginForm("AddComment", "Comments", FormMethod.Post, new { target = "hiddenFrame" }))
+        {
+            <fieldset>
+                <div class="editor-field">
+                    <textarea id="Content" name="Content" style="width:100%; height:100px"></textarea>
+                    <input type="hidden" name="JokeId" value=@Model.Id>
+                </div>
+            </fieldset>
+
+            <button class="btn-success" type="submit" onclick="$('#openB').click();">Изпрати</button>
+        }
+    </div>
+    <iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
+</div>
+
+<div class="container">
+    <h2 style="visibility: hidden">Modal Example</h2>
+    <button style="visibility: hidden" type="button" id="openB" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Нов коментар</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="textM">Успешно записахте нов коментар</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.reload()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

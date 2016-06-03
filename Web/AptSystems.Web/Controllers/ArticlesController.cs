@@ -55,6 +55,12 @@
             return View();
         }
 
+        public ActionResult _SingleArticle(string id)
+        {
+            var articleViewModel = service.GetArticle(id);
+            return PartialView(articleViewModel);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Article article, HttpPostedFileBase pathOnServer)

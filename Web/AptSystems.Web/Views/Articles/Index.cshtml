@@ -88,18 +88,21 @@
                     }
                 </ul>
             </div>
+            <div id="someDiv"></div>
             <!-- End news sticker -->
             <!-- ==================start top thumbnail slidier =============== -->
             <div class="thumbnail_slider_area">
                 <!-- Set up your HTML -->
-                <div class="owl-carousel">
+                <div class="owl-carousel">                 
                     @foreach (var item in Model[0])
                     {
                         string imageBase64 = Convert.ToBase64String(item.Image395_396);
                         string imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
 
                         <div class="signle_iteam">
-                            <img src="@imageSrc" alt="img">
+                            <a class="GetArticle" id=@item.Id>
+                                <img src="@imageSrc" alt="img">
+                            </a>
                             <div class="sing_commentbox slider_comntbox">
                                 <p><i class="fa fa-calendar col"></i>@item.CreatedAt.ToString("dd MMMM yyyy")</p>
                                 <a href="#"><i class="fa fa-comments col"></i>@item.Comments.Count</a>
@@ -987,4 +990,15 @@
         </div><!-- /.box_wrapper -->
     </div><!-- /.container -->
 
-
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.GetArticle').on('click', function (e) {
+            e.preventDefault();
+            var id = $(this).context.id;
+            $.get('@Url.Action("_SingleArticle")', { id: id }, function (result) {
+                $('#myCarousel').html(result);
+            });
+        });
+    });
+</script>

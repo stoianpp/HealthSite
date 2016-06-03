@@ -17,5 +17,7 @@
         Article AddArticle(Article article, HttpPostedFileBase pathOnServer);
 
         List<List<ArticleViewModel>> GetInitialData();
+
+        ArticleViewModel GetArticle(string id);
     }
 }
