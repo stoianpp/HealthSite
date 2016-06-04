@@ -21,23 +21,29 @@
             @foreach (var comment in Model.Comments)
             {
                 <li class="list-group-item">
-                    <p class="bg-success">@comment.Content</p>
+                    <p class="text-right"><i>@comment.CreatedAt.ToString("dd MMMM yyyy"), @comment.Author</i></p>
+                    <p class="list-group-item-text">@comment.Content</p>
                 </li>
             }
         </ul>
         <div>Публикувай нов коментар</div>
-        @using (Html.BeginForm("AddComment", "Comments", FormMethod.Post, new { target = "hiddenFrame" }))
+        @using (Html.BeginForm("AddComment", "Articles", FormMethod.Post, new { target = "hiddenFrame" }))
         {
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
             <fieldset>
                 <div class="editor-field">
                     <textarea id="Content" name="Content" style="width:100%; height:100px"></textarea>
-                    <input type="hidden" name="JokeId" value=@Model.Id>
+                    <input type="hidden" name="ArticleId" value=@Model.Id>
                 </div>
             </fieldset>
 
             <button class="btn-success" type="submit" onclick="$('#openB').click();">Изпрати</button>
         }
     </div>
+    <div id="message"></div>
     <iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
 </div>
 
@@ -62,3 +68,13 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        setTimeout(function () {
+            $("#message").fadeOut()
+        }, 5000)
+    </script>
+}

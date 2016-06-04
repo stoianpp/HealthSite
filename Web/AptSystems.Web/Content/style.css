@@ -948,6 +948,10 @@ a.logo b{
   border:none;
 }
 
+.indented{
+    padding-left: 80px;
+}
+
 /*==========start category archive page==============*/
 
 .category_archive_area{

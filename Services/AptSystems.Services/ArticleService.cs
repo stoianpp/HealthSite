@@ -16,11 +16,13 @@
     public class ArticleService : IArticleService
     {
         private IRepository<Article> repo;
+        private IRepository<Comment> commentsRepo;
         private DbContext db;
 
-        public ArticleService(IRepository<Article> repoArticle, DbContext newDb)
+        public ArticleService(IRepository<Article> repoArticle, IRepository<Comment> commentsRepo, DbContext newDb)
         {
             this.repo = repoArticle;
+            this.commentsRepo = commentsRepo;
             this.db = newDb;
         }
 
@@ -80,6 +82,13 @@
             MemoryStream ms = new MemoryStream();
             imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
             return ms.ToArray();
+        }
+
+        public void AddComment(Comment newComment)
+        {
+            this.commentsRepo.Add(newComment);
+            this.commentsRepo.SaveChanges();
+            //Article joke = repo.GetByGuidId(newComment.ArticleId);
         }
 
         public Article AddArticle(Article article, HttpPostedFileBase pathOnServer)

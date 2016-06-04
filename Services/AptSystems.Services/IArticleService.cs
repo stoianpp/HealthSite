@@ -19,5 +19,7 @@
         List<List<ArticleViewModel>> GetInitialData();
 
         ArticleViewModel GetArticle(string id);
+
+        void AddComment(Comment newComment);
     }
 }

@@ -7,7 +7,7 @@ namespace AptSystems.Models
     {
         public int Id { get; set; }
 
-        //public string ApplicationUserId { get; set; }
+        public string Author { get; set; }
 
         //public virtual ApplicationUser ApplicationUser { get; set; }
 

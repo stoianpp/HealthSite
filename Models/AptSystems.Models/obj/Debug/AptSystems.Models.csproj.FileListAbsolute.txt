@@ -40,3 +40,17 @@ C:\Users\stoia_000\Desktop\Publicity\Models\AptSystems.Models\bin\Debug\Microsof
 C:\Users\stoia_000\Desktop\Publicity\Models\AptSystems.Models\obj\Debug\AptSystems.Models.csprojResolveAssemblyReference.cache
 C:\Users\stoia_000\Desktop\Publicity\Models\AptSystems.Models\obj\Debug\AptSystems.Models.dll
 C:\Users\stoia_000\Desktop\Publicity\Models\AptSystems.Models\obj\Debug\AptSystems.Models.pdb
+C:\Users\stoia_000\Desktop\Pub\Models\AptSystems.Models\bin\Debug\AptSystems.Models.dll.config
+C:\Users\stoia_000\Desktop\Pub\Models\AptSystems.Models\bin\Debug\AptSystems.Models.dll
+C:\Users\stoia_000\Desktop\Pub\Models\AptSystems.Models\bin\Debug\AptSystems.Models.pdb
+C:\Users\stoia_000\Desktop\Pub\Models\AptSystems.Models\bin\Debug\EntityFramework.dll
+C:\Users\stoia_000\Desktop\Pub\Models\AptSystems.Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\stoia_000\Desktop\Pub\Models\AptSystems.Models\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\stoia_000\Desktop\Pub\Models\AptSystems.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\stoia_000\Desktop\Pub\Models\AptSystems.Models\bin\Debug\EntityFramework.xml
+C:\Users\stoia_000\Desktop\Pub\Models\AptSystems.Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\stoia_000\Desktop\Pub\Models\AptSystems.Models\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\stoia_000\Desktop\Pub\Models\AptSystems.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\stoia_000\Desktop\Pub\Models\AptSystems.Models\obj\Debug\AptSystems.Models.csprojResolveAssemblyReference.cache
+C:\Users\stoia_000\Desktop\Pub\Models\AptSystems.Models\obj\Debug\AptSystems.Models.dll
+C:\Users\stoia_000\Desktop\Pub\Models\AptSystems.Models\obj\Debug\AptSystems.Models.pdb

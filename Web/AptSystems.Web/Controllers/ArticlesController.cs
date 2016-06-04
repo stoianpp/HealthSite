@@ -18,15 +18,18 @@
     {
         private IArticleService service;
         private IRepository<Article> articleRepo;
+        private IRepository<Comment> commentRepo;
         private DbContext db;
 
         public ArticlesController(
             IArticleService newService,
             IRepository<Article> newRepo,
+            IRepository<Comment> newCommentRepo,
             DbContext newDb)
         {
             this.service = newService;
             this.articleRepo = newRepo;
+            this.commentRepo = newCommentRepo;
             this.db = newDb;
         }
 
@@ -87,6 +90,28 @@
             }
             return View();
 
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public void AddComment(Comment newComment)
+        {
+            if (this.ModelState.IsValid)
+            {
+                try
+                {
+                    newComment.Author = this.User.Identity.Name;
+                    newComment.CreatedAt = DateTime.Now;
+                    service.AddComment(newComment);
+                    ModelState.Clear();
+                    ViewBag.Message = "Коментарът е записан успешно";
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = "ERROR:" + ex.Message.ToString();
+                }
+            }
         }
 
         // GET: api/Articles
