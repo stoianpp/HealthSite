@@ -28,6 +28,8 @@
 
         public Byte[] Image262_218 { get; set; }
 
+        public Byte[] Image150_70 { get; set; }
+
         public Byte[] Thumbnail70_70 { get; set; }
 
         public ICollection<Comment> Comments { get; set; }

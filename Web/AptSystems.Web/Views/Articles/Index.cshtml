@@ -82,9 +82,9 @@
             <div class="latest_newsarea">
                 <span>Последни публикации</span>
                 <ul id="ticker01" class="news_sticker">
-                    @foreach (var item in Model[0])
+                    @foreach (var item in Model)
                     {
-                        <li><a href="#">@item.Title</a></li>
+                        <li><a href="#" class="GetArticle" data-articleid=@item[0].Id>@item[0].Title</a></li>
                     }
                 </ul>
             </div>
@@ -96,12 +96,12 @@
                 <div class="owl-carousel">                 
                     @foreach (var item in Model[0])
                     {
-                        string imageBase64 = Convert.ToBase64String(item.Image395_396);
-                        string imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+                        var imageBase640 = Convert.ToBase64String(item.Image395_396);
+                        var imageSrc0 = string.Format("data:image/gif;base64,{0}", imageBase640);
 
                         <div class="signle_iteam">
-                            <a class="GetArticle" id=@item.Id>
-                                <img src="@imageSrc" alt="img">
+                            <a class="GetArticle" data-articleid=@item.Id>
+                                <img src="@imageSrc0" alt="img">
                             </a>
                             <div class="sing_commentbox slider_comntbox">
                                 <p><i class="fa fa-calendar col"></i>@item.CreatedAt.ToString("dd MMMM yyyy")</p>
@@ -123,24 +123,20 @@
                             <div class="left_bar">
                                 <!-- start single leftbar -->
                                 <div class="single_leftbar">
-                                    <h2><span>Последни публикации</span></h2>
-                                    <div class="singleleft_inner">
-                                        <ul class="recentpost_nav wow fadeInDown">
-                                            <li>
-                                                <a href="single_page.html"><img src="http://lorempixel.com/150/80/" alt="img"></a>
-                                                <a class="catg_title" href="single_page.html"> Curabitur ac dictum nisl eu hendrerit ante</a>
-                                            </li>
-                                            <li>
-                                                <a href="single_page.html"><img src="http://lorempixel.com/150/80/" alt="img"></a>
-                                                <a class="catg_title" href="single_page.html"> Curabitur ac dictum nisl eu hendrerit ante</a>
-                                            </li>
-                                           
-                                             <li>
-                                                <a href="single_page.html"><img src="http://lorempixel.com/150/80/" alt="img"></a>
-                                                <a class="catg_title" href="single_page.html"> Curabitur ac dictum nisl eu hendrerit ante</a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <h2><span>Последни публикации</span></h2>                                  
+                                        <div class="singleleft_inner">
+                                            <ul class="recentpost_nav wow fadeInDown">
+                                                @for (int i = 0; i < 4; i++)
+                                                {
+                                                    var imageBase641 = Convert.ToBase64String(Model[6][i].Image150_70);
+                                                    var imageSrc1 = string.Format("data:image/gif;base64,{0}", imageBase641);
+                                                    <li>
+                                                        <a href="single_page.html" class="GetArticle" data-articleid="@Model[6][i].Id"><img src="@imageSrc1" alt="img"></a>
+                                                        <a class="catg_title" href="single_page.html"> @Model[6][i].Title</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>                                   
                                 </div>
                                 <!-- start single leftbar -->
                                 <div class="single_leftbar wow fadeInDown">
@@ -171,27 +167,43 @@
                                         </ol>
                                         <div class="carousel-inner" role="listbox">
                                             <div class="item active">
-                                                <img src="http://lorempixel.com/668/328/" alt="First slide">
+                                                @{
+                                                    string imageBase64 = Convert.ToBase64String(Model[5][0].Image668_328);
+                                                    string imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+                                                }
+                                                <img src="@imageSrc" class="GetArticle" data-articleid="@Model[5][0].Id" alt="First slide">
                                                 <div class="carousel-caption">
-                                                    <h1><a href="#"> Aliquam malesuada diam eget turpis varius 1</a></h1>
+                                                    <h1><a href="#"> @Model[5][0].Title</a></h1>
                                                 </div>
                                             </div>
                                             <div class="item">
-                                                <img src="http://lorempixel.com/668/328/" alt="First slide">
+                                                @{
+                                                    imageBase64 = Convert.ToBase64String(Model[5][1].Image668_328);
+                                                    imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+                                                }
+                                                <img src="@imageSrc" class="GetArticle" data-articleid="@Model[5][1].Id" alt="First slide">
                                                 <div class="carousel-caption">
-                                                    <h1><a href="#"> Aliquam malesuada diam eget turpis varius 2</a></h1>
+                                                    <h1><a href="#"> @Model[5][1].Title</a></h1>
                                                 </div>
                                             </div>
                                             <div class="item">
-                                                <img src="http://lorempixel.com/668/328/" alt="First slide">
+                                                @{
+                                                    imageBase64 = Convert.ToBase64String(Model[5][2].Image668_328);
+                                                    imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+                                                }
+                                                <img src="@imageSrc" class="GetArticle" data-articleid="@Model[5][2].Id" alt="First slide">
                                                 <div class="carousel-caption">
-                                                    <h1><a href="#"> Aliquam malesuada diam eget turpis varius 3</a></h1>
+                                                    <h1><a href="#"> @Model[5][2].Title</a></h1>
                                                 </div>
                                             </div>
                                             <div class="item">
-                                                <img src="http://lorempixel.com/668/328/" alt="First slide">
+                                                @{
+                                                    imageBase64 = Convert.ToBase64String(Model[5][3].Image668_328);
+                                                    imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+                                                }
+                                                <img src="@imageSrc" class="GetArticle" data-articleid="@Model[5][3].Id" alt="First slide">
                                                 <div class="carousel-caption">
-                                                    <h1><a href="#"> Aliquam malesuada diam eget turpis varius 4</a></h1>
+                                                    <h1><a href="#"> @Model[5][3].Title</a></h1>
                                                 </div>
                                             </div>
 
@@ -213,13 +225,13 @@
                                         <ul class="catg_nav">
                                             @foreach (var item in Model[0])
                                             { 
-                                                string imageBase64 = Convert.ToBase64String(item.Image310_150);
-                                                string imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+                                                string imageBase642 = Convert.ToBase64String(item.Image310_150);
+                                                string imageSrc2 = string.Format("data:image/gif;base64,{0}", imageBase642);
 
                                                 <li>
                                                     <div class="catgimg_container">
                                                         <a class="catg1_img" href="single_page.html">
-                                                            <img src="@imageSrc" alt="img">
+                                                            <img src="@imageSrc2" class="GetArticle" data-articleid="@item.Id" alt="img">
                                                         </a>
                                                     </div>
                                                     <a class="catg_title" href="single_page.html"> @item.Title</a>
@@ -239,32 +251,26 @@
                                     </div>
                                     <div class="single_category_inner">
                                         <ul class="catg_nav catg_nav2">
-                                            <li>
-                                                <div class="catgimg_container">
-                                                    <a class="catg1_img" href="#">
-                                                        <img src="http://lorempixel.com/310/300/" alt="img">
-                                                    </a>
-                                                </div>
-                                                <a class="catg_title" href="#"> Curabitur ac dictum nisl eu hendrerit ante</a>
-                                                <div class="sing_commentbox">
-                                                    <p><i class="fa fa-calendar"></i>19 Nov 2014</p>
-                                                    <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                                                </div>
-                                                <p class="post-summary">Suspendisse mauris dui, interdum vitae vehicula ut, posuere sed lectus. Nulla facilisi. Curabitur...</p>
-                                            </li>
-                                            <li>
-                                                <div class="catgimg_container">
-                                                    <a class="catg1_img" href="#">
-                                                        <img src="http://lorempixel.com/310/300/" alt="img">
-                                                    </a>
-                                                </div>
-                                                <a class="catg_title" href="#">Fusce eu nulla semper porttitor felis sit amet</a>
-                                                <div class="sing_commentbox">
-                                                    <p><i class="fa fa-calendar"></i>19 Nov 2014</p>
-                                                    <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                                                </div>
-                                                <p class="post-summary">Suspendisse mauris dui, interdum vitae vehicula ut, posuere sed lectus. Nulla facilisi. Curabitur...</p>
-                                            </li>
+                                            @for (int i = 0; i < 2; i++)
+                                            {
+                                                <li>
+                                                    <div class="catgimg_container">
+                                                        @{
+                                                            string imageBase644 = Convert.ToBase64String(Model[1][i].Image310_150);
+                                                            string imageSrc4 = string.Format("data:image/gif;base64,{0}", imageBase644);
+                                                        }
+                                                        <a class="catg1_img" href="#">
+                                                            <img src="@imageSrc4" class="GetArticle" data-articleid=@Model[1][i].Id alt="img">
+                                                        </a>
+                                                    </div>
+                                                    <a class="catg_title" href="#"> @Model[1][i].Title</a>
+                                                    <div class="sing_commentbox">
+                                                        <p><i class="fa fa-calendar"></i>@Model[1][i].CreatedAt.ToString("dd MMMM yyyy")</p>
+                                                        <a href="#"><i class="fa fa-comments"></i>@Model[1][i].Comments.Count</a>
+                                                    </div>
+                                                    <p class="post-summary">@Model[1][i].Content</p>
+                                                </li>
+                                            }                                           
                                         </ul>
                                     </div>
                                 </div> <!-- End category Two -->
@@ -297,13 +303,13 @@
                                                     <ul class="catg3_snav">
                                                         @foreach (var item in Model[0])
                                                         {
-                                                            string imageBase64 = Convert.ToBase64String(item.Thumbnail70_70);
-                                                            string imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+                                                            var imageBase643 = Convert.ToBase64String(item.Thumbnail70_70);
+                                                            var imageSrc3 = string.Format("data:image/gif;base64,{0}", imageBase643);
 
                                                             <li>
                                                                 <div class="media">
                                                                     <a class="media-left" href="single_page.html">
-                                                                        <img src="@imageSrc" alt="img">
+                                                                        <img src="@imageSrc" class="GetArticle" data-articleid=@item.Id alt="img">
                                                                     </a>
                                                                     <div class="media-body">
                                                                         <a class="catg_title" href="single_page.html"> @item.Title</a>
@@ -515,107 +521,23 @@
                                     <h2><span>Популярни</span></h2>
                                     <div class="singleleft_inner">
                                         <ul class="catg3_snav ppost_nav wow fadeInDown">
-                                            <li>
-                                                <div class="media">
-                                                    <a href="single_page.html" class="media-left">
-                                                        <img alt="img" src="http://lorempixel.com/70/70/">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <a href="single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius</a>
+                                            @foreach (var item in Model[7])
+                                            {
+                                                <li>
+                                                    @{ 
+                                                        var imageBase645 = Convert.ToBase64String(item.Thumbnail70_70);
+                                                        var imageSrc5 = string.Format("data:image/gif;base64,{0}", imageBase645);
+                                                    }
+                                                    <div class="media">
+                                                        <a href="single_page.html" class="media-left">
+                                                            <img alt="img" class="GetArticle" data-articleid=@item.Id src="@imageSrc5">
+                                                        </a>
+                                                        <div class="media-body">
+                                                            <a href="single_page.html" class="catg_title"> @item.Title</a>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="media">
-                                                    <a href="single_page.html" class="media-left">
-                                                        <img alt="img" src="http://lorempixel.com/70/70/">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="media">
-                                                    <a href="single_page.html" class="media-left">
-                                                        <img alt="img" src="http://lorempixel.com/70/70/">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="media">
-                                                    <a href="#" class="media-left">
-                                                        <img alt="img" src="http://lorempixel.com/70/70/">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="media">
-                                                    <a href="#" class="media-left">
-                                                        <img alt="img" src="http://lorempixel.com/70/70/">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="media">
-                                                    <a href="#" class="media-left">
-                                                        <img alt="img" src="http://lorempixel.com/70/70/">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="media">
-                                                    <a href="#" class="media-left">
-                                                        <img alt="img" src="http://lorempixel.com/70/70/">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="media">
-                                                    <a href="#" class="media-left">
-                                                        <img alt="img" src="http://lorempixel.com/70/70/">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="media">
-                                                    <a href="#" class="media-left">
-                                                        <img alt="img" src="http://lorempixel.com/70/70/">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a>
-
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="media">
-                                                    <a href="#" class="media-left">
-                                                        <img alt="img" src="http://lorempixel.com/70/70/">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a>
-                                                    </div>
-                                                </div>
-                                            </li>
+                                                </li>
+                                            }
                                         </ul>
                                     </div>
                                 </div>
@@ -995,7 +917,7 @@
     $(document).ready(function () {
         $('.GetArticle').on('click', function (e) {
             e.preventDefault();
-            var id = $(this).context.id;
+            var id = $(this).data("articleid");
             $.get('@Url.Action("_SingleArticle")', { id: id }, function (result) {
                 $('#myCarousel').html(result);
             });

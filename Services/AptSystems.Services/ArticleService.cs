@@ -88,7 +88,6 @@
         {
             this.commentsRepo.Add(newComment);
             this.commentsRepo.SaveChanges();
-            //Article joke = repo.GetByGuidId(newComment.ArticleId);
         }
 
         public Article AddArticle(Article article, HttpPostedFileBase pathOnServer)
@@ -123,21 +122,35 @@
         public List<List<ArticleViewModel>> GetInitialData()
         {
             var result = new List<List<ArticleViewModel>>();
-            var health5 = repo.All()
-                                    .Where(z => z.Category == CategoryTypes.Health)
+
+            var allArticles = repo.All();
+            result.Add(GetHealthArticles(allArticles));
+            result.Add(GetNutritionArticles(allArticles));
+            result.Add(GetFitnessArticles(allArticles));
+            result.Add(GetMedicineArticles(allArticles));
+            result.Add(GetFamilyArticles(allArticles));
+            result.Add(GetPromoArticles(allArticles));
+            result.Add(GetLastArticles(allArticles));
+            result.Add(GetCommentedArticles(allArticles));
+            return result;
+        }
+
+        public List<ArticleViewModel> GetHealthArticles(IQueryable<Article> allArticles)
+        {
+            var health5 = allArticles.Where(z => z.Category == CategoryTypes.Health)
                                     .OrderByDescending(x => x.CreatedAt)
                                     .Take(4).ToList();
 
             var health5List = health5.Select(y => new ArticleViewModel
-                                    {
-                                        Id = y.Id,
-                                        Title = y.Title,
-                                        Content = y.Content,
-                                        CreatedAt = y.CreatedAt,
-                                        Comments = y.Comments,
-                                        Image395_396 = y.Image,
-                                        Thumbnail70_70 = y.Tumbnail,
-                                    }).ToList();
+            {
+                Id = y.Id,
+                Title = y.Title,
+                Content = y.Content,
+                CreatedAt = y.CreatedAt,
+                Comments = y.Comments,
+                Image395_396 = y.Image,
+                Thumbnail70_70 = y.Tumbnail,
+            }).ToList();
 
             foreach (var item in health5List)
             {
@@ -145,8 +158,172 @@
                 item.Image310_150 = ImageToByteArray(FixedSize(baseImage, new Size(310, 150)));
             }
 
-            result.Add(health5List);
-            return result;
+            return health5List;
+        }
+
+        public List<ArticleViewModel> GetNutritionArticles(IQueryable<Article> allArticles)
+        {
+            var nutrition2 = allArticles.Where(z => z.Category == CategoryTypes.Nutrition)
+                                    .OrderByDescending(x => x.CreatedAt)
+                                    .Take(2).ToList();
+
+            var nutrition2List = nutrition2.Select(y => new ArticleViewModel
+            {
+                Id = y.Id,
+                Title = y.Title,
+                Content = y.Content.Substring(0,100)+"...",
+                CreatedAt = y.CreatedAt,
+                Comments = y.Comments,
+                Image395_396 = y.Image,
+                Thumbnail70_70 = y.Tumbnail,
+            }).ToList();
+
+            foreach (var item in nutrition2List)
+            {
+                Image baseImage = ByteArrayToImage(item.Image395_396);
+                item.Image310_150 = ImageToByteArray(ResizeImage(baseImage, new Size(310, 150)));
+            }
+
+            return nutrition2List;
+        }
+
+        public List<ArticleViewModel> GetFitnessArticles(IQueryable<Article> allArticles)
+        {
+            var fitness6 = allArticles.Where(z => z.Category == CategoryTypes.Fitness)
+                                    .OrderByDescending(x => x.CreatedAt)
+                                    .Take(6).ToList();
+
+            var fitness6List = fitness6.Select(y => new ArticleViewModel
+            {
+                Id = y.Id,
+                Title = y.Title,
+                Content = y.Content,
+                CreatedAt = y.CreatedAt,
+                Comments = y.Comments,
+                Image395_396 = y.Image,
+                Thumbnail70_70 = y.Tumbnail,
+            }).ToList();
+
+            foreach (var item in fitness6List)
+            {
+                Image baseImage = ByteArrayToImage(item.Image395_396);
+                item.Image310_150 = ImageToByteArray(FixedSize(baseImage, new Size(295, 150)));
+            }
+
+            return fitness6List;
+        }
+
+        public List<ArticleViewModel> GetMedicineArticles(IQueryable<Article> allArticles)
+        {
+            var medicine6 = allArticles.Where(z => z.Category == CategoryTypes.Medicine)
+                                    .OrderByDescending(x => x.CreatedAt)
+                                    .Take(6).ToList();
+
+            var medicine6List = medicine6.Select(y => new ArticleViewModel
+            {
+                Id = y.Id,
+                Title = y.Title,
+                Content = y.Content,
+                CreatedAt = y.CreatedAt,
+                Comments = y.Comments,
+                Image395_396 = y.Image,
+                Thumbnail70_70 = y.Tumbnail,
+            }).ToList();
+
+            foreach (var item in medicine6List)
+            {
+                Image baseImage = ByteArrayToImage(item.Image395_396);
+                item.Image310_150 = ImageToByteArray(FixedSize(baseImage, new Size(295, 150)));
+            }
+
+            return medicine6List;
+        }
+
+        public List<ArticleViewModel> GetFamilyArticles(IQueryable<Article> allArticles)
+        {
+            var family6 = allArticles.Where(z => z.Category == CategoryTypes.Family)
+                                    .OrderByDescending(x => x.CreatedAt)
+                                    .Take(6).ToList();
+
+            var family6List = family6.Select(y => new ArticleViewModel
+            {
+                Id = y.Id,
+                Title = y.Title,
+                Content = y.Content,
+                CreatedAt = y.CreatedAt,
+                Comments = y.Comments,
+                Image395_396 = y.Image,
+                Thumbnail70_70 = y.Tumbnail,
+            }).ToList();
+
+            return family6List;
+        }
+
+        public List<ArticleViewModel> GetPromoArticles(IQueryable<Article> allArticles)
+        {
+            var promo4 = allArticles.Where(z => z.Category == CategoryTypes.Slider)
+                                    .OrderByDescending(x => x.CreatedAt)
+                                    .Take(4).ToList();
+
+            var promo4List = promo4.Select(y => new ArticleViewModel
+            {
+                Id = y.Id,
+                Title = y.Title,
+                Content = y.Content,
+                CreatedAt = y.CreatedAt,
+                Comments = y.Comments,
+                Image668_328 = y.Image,
+                Thumbnail70_70 = y.Tumbnail,
+            }).ToList();
+
+            return promo4List;
+        }
+
+        public List<ArticleViewModel> GetLastArticles(IQueryable<Article> allArticles)
+        {
+            var promo4 = allArticles.Where(z => z.Category == CategoryTypes.Slider)
+                                    .OrderByDescending(x => x.CreatedAt)
+                                    .Take(10).ToList();
+
+            var last10List = promo4.Select(y => new ArticleViewModel
+            {
+                Id = y.Id,
+                Title = y.Title,
+                CreatedAt = y.CreatedAt,
+                Comments = y.Comments,
+                Image395_396 = y.Image,
+                Thumbnail70_70 = y.Tumbnail,
+            }).ToList();
+
+            foreach (var item in last10List)
+            {
+                if (item != null)
+                {
+                    Image baseImage = ByteArrayToImage(item.Image395_396);
+                    item.Image150_70 = ImageToByteArray(FixedSize(baseImage, new Size(150, 70)));
+                }
+            }
+
+            return last10List;
+        }
+
+        public List<ArticleViewModel> GetCommentedArticles(IQueryable<Article> allArticles)
+        {
+            var commented10 = allArticles.OrderByDescending(x => x.Comments.Count)
+                                    .Take(10).ToList();
+
+            var commented10List = commented10.Select(y => new ArticleViewModel
+            {
+                Id = y.Id,
+                Title = y.Title.Length > 50? y.Title.Substring(0, 50)+"...": y.Title, 
+                Content = y.Content,
+                CreatedAt = y.CreatedAt,
+                Comments = y.Comments,
+                Image395_396 = y.Image,
+                Thumbnail70_70 = y.Tumbnail,
+            }).ToList();
+
+            return commented10List;
         }
     }
 }
