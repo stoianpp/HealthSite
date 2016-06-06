@@ -256,11 +256,11 @@
                                                 <li>
                                                     <div class="catgimg_container">
                                                         @{
-                                                            string imageBase644 = Convert.ToBase64String(Model[1][i].Image310_150);
-                                                            string imageSrc4 = string.Format("data:image/gif;base64,{0}", imageBase644);
+                                                            string imageBase645 = Convert.ToBase64String(Model[1][i].Image310_150);
+                                                            string imageSrc5 = string.Format("data:image/gif;base64,{0}", imageBase645);
                                                         }
                                                         <a class="catg1_img" href="#">
-                                                            <img src="@imageSrc4" class="GetArticle" data-articleid=@Model[1][i].Id alt="img">
+                                                            <img src="@imageSrc5" class="GetArticle" data-articleid=@Model[1][i].Id alt="img">
                                                         </a>
                                                     </div>
                                                     <a class="catg_title" href="#"> @Model[1][i].Title</a>
@@ -287,29 +287,34 @@
                                                     <li>
                                                         <div class="catgimg_container">
                                                             <a class="catg1_img" href="single_page.html">
-                                                                <img src="http://lorempixel.com/292/150/" alt="img">
+                                                                @{
+                                                                    string imageBase644 = Convert.ToBase64String(Model[3][0].Image310_150);
+                                                                    string imageSrc4 = string.Format("data:image/gif;base64,{0}", imageBase644);
+                                                                }
+                                                                <img src="@imageSrc4" class="GetArticle" data-articleid=@Model[3][0].Id alt="img">
                                                             </a>
                                                         </div>
-                                                        <a class="catg_title" href="#"> Curabitur ac dictum nisl eu hendrerit ante</a>
+                                                        <a class="catg_title" href="#"> @Model[3][0].Title</a>
                                                         <div class="sing_commentbox">
-                                                            <p><i class="fa fa-calendar"></i>19 Nov 2014</p>
-                                                            <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
+                                                            <p><i class="fa fa-calendar"></i>@Model[3][0].CreatedAt.ToString("dd MMMM yyyy")</p>
+                                                            <a href="#"><i class="fa fa-comments"></i>@Model[3][0].Comments.Count</a>
                                                         </div>
-                                                        <p class="post-summary">Duis erat purus, tincidunt vel ullamcorper ut, consequat tempus nibh. Proin condimentum risus ligula, dignissim mollis tortor hendrerit vel. Aliquam...</p>
+                                                        <p class="post-summary">@Model[3][0].Content</p>
                                                     </li>
                                                 </ul>
                                                 <!-- start category3 bottom post -->
                                                 <div class="catg3_bottompost wow fadeInDown">
                                                     <ul class="catg3_snav">
-                                                        @foreach (var item in Model[0])
+                                                        @for (int i = 1; i <= 4; i++)
                                                         {
-                                                            var imageBase643 = Convert.ToBase64String(item.Thumbnail70_70);
-                                                            var imageSrc3 = string.Format("data:image/gif;base64,{0}", imageBase643);
+                                                            var item = Model[3][i];
+                                                            var imageBase647 = Convert.ToBase64String(item.Thumbnail70_70);
+                                                            var imageSrc7 = string.Format("data:image/gif;base64,{0}", imageBase647);
 
                                                             <li>
                                                                 <div class="media">
                                                                     <a class="media-left" href="single_page.html">
-                                                                        <img src="@imageSrc" class="GetArticle" data-articleid=@item.Id alt="img">
+                                                                        <img src="@imageSrc7" class="GetArticle" data-articleid=@item.Id alt="img">
                                                                     </a>
                                                                     <div class="media-body">
                                                                         <a class="catg_title" href="single_page.html"> @item.Title</a>
@@ -337,77 +342,46 @@
                                                     <li>
                                                         <div class="catgimg_container">
                                                             <a class="catg1_img" href="single_page.html">
-                                                                <img src="http://lorempixel.com/292/150/" alt="img">
+                                                                @{
+                                                                    string imageBase646 = Convert.ToBase64String(Model[2][0].Image310_150);
+                                                                    string imageSrc6 = string.Format("data:image/gif;base64,{0}", imageBase646);
+                                                                }
+                                                                <img src="@imageSrc6" class="GetArticle" data-articleid=@Model[2][0].Id alt="img">
                                                             </a>
                                                         </div>
-                                                        <a class="catg_title" href="single_page.html"> Curabitur ac dictum nisl eu hendrerit ante</a>
+                                                        <a class="catg_title" href="#"> @Model[2][0].Title</a>
                                                         <div class="sing_commentbox">
-                                                            <p><i class="fa fa-calendar"></i>19 Nov 2014</p>
-                                                            <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
+                                                            <p><i class="fa fa-calendar"></i>@Model[2][0].CreatedAt.ToString("dd MMMM yyyy")</p>
+                                                            <a href="#"><i class="fa fa-comments"></i>@Model[2][0].Comments.Count</a>
                                                         </div>
-                                                        <p class="post-summary">Duis erat purus, tincidunt vel ullamcorper ut, consequat tempus nibh. Proin condimentum risus ligula, dignissim mollis tortor hendrerit vel. Aliquam...</p>
+                                                        <p class="post-summary">@Model[2][0].Content</p>
                                                     </li>
                                                 </ul>
 
                                                 <!-- start category4 bottom post -->
                                                 <div class="catg3_bottompost wow fadeInDown">
                                                     <ul class="catg3_snav">
-                                                        <li>
-                                                            <div class="media">
-                                                                <a class="media-left" href="single_page.html">
-                                                                    <img src="http://lorempixel.com/70/70/" alt="img">
-                                                                </a>
-                                                                <div class="media-body">
-                                                                    <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                                                    <div class="sing_commentbox">
-                                                                        <p><i class="fa fa-calendar"></i>19 Nov 2014</p>
-                                                                        <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
+                                                        @for (int i = 1; i <= 4; i++)
+                                                        {
+                                                            var item = Model[2][i];
+                                                            var imageBase647 = Convert.ToBase64String(item.Thumbnail70_70);
+                                                            var imageSrc7 = string.Format("data:image/gif;base64,{0}", imageBase647);
+
+                                                            <li>
+                                                                <div class="media">
+                                                                    <a class="media-left" href="single_page.html">
+                                                                        <img src="@imageSrc7" class="GetArticle" data-articleid=@item.Id alt="img">
+                                                                    </a>
+                                                                    <div class="media-body">
+                                                                        <a class="catg_title" href="single_page.html"> @item.Title</a>
+                                                                        <div class="sing_commentbox">
+                                                                            <p><i class="fa fa-calendar"></i>@item.CreatedAt.ToString("dd MMMM yyyy")</p>
+                                                                            <a href="#"><i class="fa fa-comments"></i>@item.Comments.Count Comments</a>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="media">
-                                                                <a class="media-left" href="#">
-                                                                    <img src="http://lorempixel.com/70/70/" alt="img">
-                                                                </a>
-                                                                <div class="media-body">
-                                                                    <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                                                    <div class="sing_commentbox">
-                                                                        <p><i class="fa fa-calendar"></i>19 Nov 2014</p>
-                                                                        <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="media">
-                                                                <a class="media-left" href="#">
-                                                                    <img src="http://lorempixel.com/70/70/" alt="img">
-                                                                </a>
-                                                                <div class="media-body">
-                                                                    <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                                                    <div class="sing_commentbox">
-                                                                        <p><i class="fa fa-calendar"></i>19 Nov 2014</p>
-                                                                        <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="media">
-                                                                <a class="media-left" href="#">
-                                                                    <img src="http://lorempixel.com/70/70/" alt="img">
-                                                                </a>
-                                                                <div class="media-body">
-                                                                    <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                                                    <div class="sing_commentbox">
-                                                                        <p><i class="fa fa-calendar"></i>19 Nov 2014</p>
-                                                                        <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
+                                                            </li>
+                                                        }
                                                     </ul>
                                                 </div>
                                             </div>
@@ -421,90 +395,27 @@
                                     </div>
                                     <div class="single_category_inner">
                                         <ul class="catg3_snav catg5_nav">
-                                            <li>
-                                                <div class="media">
-                                                    <a href="#" class="media-left">
-                                                        <img alt="img" src="http://lorempixel.com/70/70/">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a>
-                                                        <div class="sing_commentbox">
-                                                            <p><i class="fa fa-calendar"></i>19 Nov 2014</p>
-                                                            <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
+                                            @for (int i = 0; i < 6; i++)
+                                            {
+                                                var item = Model[4][i];
+                                                var imageBase647 = Convert.ToBase64String(item.Thumbnail70_70);
+                                                var imageSrc7 = string.Format("data:image/gif;base64,{0}", imageBase647);
+
+                                                <li>
+                                                    <div class="media">
+                                                        <a href="#" class="media-left">
+                                                            <img alt="img" class="GetArticle" data-articleid=@item.Id src="@imageSrc7">
+                                                        </a>
+                                                        <div class="media-body">
+                                                            <a href="#" class="catg_title"> @item.Title</a>
+                                                            <div class="sing_commentbox">
+                                                                <p><i class="fa fa-calendar"></i>@item.CreatedAt.ToString("dd MMMM yyyy")</p>
+                                                                <a href="#"><i class="fa fa-comments"></i>@item.Comments.Count Comments</a>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="media">
-                                                    <a href="#" class="media-left">
-                                                        <img alt="img" src="http://lorempixel.com/70/70/">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a>
-                                                        <div class="sing_commentbox">
-                                                            <p><i class="fa fa-calendar"></i>19 Nov 2014</p>
-                                                            <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="media">
-                                                    <a href="#" class="media-left">
-                                                        <img alt="img" src="http://lorempixel.com/70/70/">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a>
-                                                        <div class="sing_commentbox">
-                                                            <p><i class="fa fa-calendar"></i>19 Nov 2014</p>
-                                                            <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="media">
-                                                    <a href="#" class="media-left">
-                                                        <img alt="img" src="http://lorempixel.com/70/70/">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a>
-                                                        <div class="sing_commentbox">
-                                                            <p><i class="fa fa-calendar"></i>19 Nov 2014</p>
-                                                            <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="media">
-                                                    <a href="#" class="media-left">
-                                                        <img alt="img" src="http://lorempixel.com/70/70/">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a>
-                                                        <div class="sing_commentbox">
-                                                            <p><i class="fa fa-calendar"></i>19 Nov 2014</p>
-                                                            <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="media">
-                                                    <a href="#" class="media-left">
-                                                        <img alt="img" src="http://lorempixel.com/70/70/">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a>
-                                                        <div class="sing_commentbox">
-                                                            <p><i class="fa fa-calendar"></i>19 Nov 2014</p>
-                                                            <a href="#"><i class="fa fa-comments"></i>20 Comments</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
+                                                </li>
+                                            }
                                         </ul>
                                     </div>
                                 </div> <!-- End category Five -->

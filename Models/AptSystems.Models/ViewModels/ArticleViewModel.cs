@@ -26,6 +26,8 @@
 
         public Byte[] Image310_150 { get; set; }
 
+        public Byte[] Image292_150 { get; set; }
+
         public Byte[] Image262_218 { get; set; }
 
         public Byte[] Image150_70 { get; set; }

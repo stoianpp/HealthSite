@@ -196,8 +196,8 @@
             var fitness6List = fitness6.Select(y => new ArticleViewModel
             {
                 Id = y.Id,
-                Title = y.Title,
-                Content = y.Content,
+                Title = y.Title.Length > 47 ? y.Title.Substring(0, 47) + "..." : y.Title,
+                Content = y.Content.Length > 100 ? y.Content.Substring(0, 199) + "..." : y.Content,
                 CreatedAt = y.CreatedAt,
                 Comments = y.Comments,
                 Image395_396 = y.Image,
@@ -222,8 +222,8 @@
             var medicine6List = medicine6.Select(y => new ArticleViewModel
             {
                 Id = y.Id,
-                Title = y.Title,
-                Content = y.Content,
+                Title = y.Title.Length > 47 ? y.Title.Substring(0, 47) + "..." : y.Title,
+                Content = y.Content.Length>100? y.Content.Substring(0,199)+"...": y.Content,
                 CreatedAt = y.CreatedAt,
                 Comments = y.Comments,
                 Image395_396 = y.Image,
@@ -248,8 +248,8 @@
             var family6List = family6.Select(y => new ArticleViewModel
             {
                 Id = y.Id,
-                Title = y.Title,
-                Content = y.Content,
+                Title = y.Title.Length > 47 ? y.Title.Substring(0, 47) + "..." : y.Title,
+                Content = y.Content.Length > 100 ? y.Content.Substring(0, 199) + "..." : y.Content,
                 CreatedAt = y.CreatedAt,
                 Comments = y.Comments,
                 Image395_396 = y.Image,
