@@ -107,7 +107,7 @@
                                 <p><i class="fa fa-calendar col"></i>@item.CreatedAt.ToString("dd MMMM yyyy")</p>
                                 <a href="#"><i class="fa fa-comments col"></i>@item.Comments.Count</a>
                             </div>
-                            <a class="slider_tittle" href="#">@item.Title</a>
+                            <a class="slider_tittle GetArticle" data-articleid=@item.Id href="#">@item.Title</a>
                         </div>
                     }
                     
@@ -132,7 +132,7 @@
                                                     var imageSrc1 = string.Format("data:image/gif;base64,{0}", imageBase641);
                                                     <li>
                                                         <a href="single_page.html" class="GetArticle" data-articleid="@Model[6][i].Id"><img src="@imageSrc1" alt="img"></a>
-                                                        <a class="catg_title" href="single_page.html"> @Model[6][i].Title</a>
+                                                        <a class="catg_title GetArticle" data-articleid=@Model[6][i].Id href="#"> @Model[6][i].Title</a>
                                                     </li>
                                                 }
                                             </ul>
@@ -173,7 +173,7 @@
                                                 }
                                                 <img src="@imageSrc" class="GetArticle" data-articleid="@Model[5][0].Id" alt="First slide">
                                                 <div class="carousel-caption">
-                                                    <h1><a href="#"> @Model[5][0].Title</a></h1>
+                                                    <h1><a class="GetArticle" data-articleid="@Model[5][0].Id" href="#"> @Model[5][0].Title</a></h1>
                                                 </div>
                                             </div>
                                             <div class="item">
@@ -183,7 +183,7 @@
                                                 }
                                                 <img src="@imageSrc" class="GetArticle" data-articleid="@Model[5][1].Id" alt="First slide">
                                                 <div class="carousel-caption">
-                                                    <h1><a href="#"> @Model[5][1].Title</a></h1>
+                                                    <h1><a class="GetArticle" data-articleid="@Model[5][1].Id" href="#"> @Model[5][1].Title</a></h1>
                                                 </div>
                                             </div>
                                             <div class="item">
@@ -193,7 +193,7 @@
                                                 }
                                                 <img src="@imageSrc" class="GetArticle" data-articleid="@Model[5][2].Id" alt="First slide">
                                                 <div class="carousel-caption">
-                                                    <h1><a href="#"> @Model[5][2].Title</a></h1>
+                                                    <h1><a class="GetArticle" data-articleid="@Model[5][2].Id" href="#"> @Model[5][2].Title</a></h1>
                                                 </div>
                                             </div>
                                             <div class="item">
@@ -203,7 +203,7 @@
                                                 }
                                                 <img src="@imageSrc" class="GetArticle" data-articleid="@Model[5][3].Id" alt="First slide">
                                                 <div class="carousel-caption">
-                                                    <h1><a href="#"> @Model[5][3].Title</a></h1>
+                                                    <h1><a class="GetArticle" data-articleid="@Model[5][3].Id" href="#"> @Model[5][3].Title</a></h1>
                                                 </div>
                                             </div>
 
@@ -234,7 +234,7 @@
                                                             <img src="@imageSrc2" class="GetArticle" data-articleid="@item.Id" alt="img">
                                                         </a>
                                                     </div>
-                                                    <a class="catg_title" href="single_page.html"> @item.Title</a>
+                                                    <a class="catg_title GetArticle" data-articleid="@item.Id" href="#"> @item.Title</a>
                                                     <div class="sing_commentbox">
                                                         <p><i class="fa fa-calendar"></i>@item.CreatedAt.ToString("dd MMMM yyyy")</p>
                                                         <a href="#"><i class="fa fa-comments"></i>@item.Comments.Count Comments</a>
@@ -263,7 +263,7 @@
                                                             <img src="@imageSrc5" class="GetArticle" data-articleid=@Model[1][i].Id alt="img">
                                                         </a>
                                                     </div>
-                                                    <a class="catg_title" href="#"> @Model[1][i].Title</a>
+                                                    <a class="catg_title GetArticle" data-articleid=@Model[1][i].Id href="#"> @Model[1][i].Title</a>
                                                     <div class="sing_commentbox">
                                                         <p><i class="fa fa-calendar"></i>@Model[1][i].CreatedAt.ToString("dd MMMM yyyy")</p>
                                                         <a href="#"><i class="fa fa-comments"></i>@Model[1][i].Comments.Count</a>
@@ -294,7 +294,7 @@
                                                                 <img src="@imageSrc4" class="GetArticle" data-articleid=@Model[3][0].Id alt="img">
                                                             </a>
                                                         </div>
-                                                        <a class="catg_title" href="#"> @Model[3][0].Title</a>
+                                                        <a class="catg_title GetArticle" data-articleid=@Model[3][0].Id href="#"> @Model[3][0].Title</a>
                                                         <div class="sing_commentbox">
                                                             <p><i class="fa fa-calendar"></i>@Model[3][0].CreatedAt.ToString("dd MMMM yyyy")</p>
                                                             <a href="#"><i class="fa fa-comments"></i>@Model[3][0].Comments.Count</a>
@@ -317,7 +317,7 @@
                                                                         <img src="@imageSrc7" class="GetArticle" data-articleid=@item.Id alt="img">
                                                                     </a>
                                                                     <div class="media-body">
-                                                                        <a class="catg_title" href="single_page.html"> @item.Title</a>
+                                                                        <a class="catg_title GetArticle" href="#" data-articleid=@item.Id> @item.Title</a>
                                                                         <div class="sing_commentbox">
                                                                             <p><i class="fa fa-calendar"></i>@item.CreatedAt.ToString("dd MMMM yyyy")</p>
                                                                             <a href="#"><i class="fa fa-comments"></i>@item.Comments.Count Comments</a>
@@ -349,7 +349,7 @@
                                                                 <img src="@imageSrc6" class="GetArticle" data-articleid=@Model[2][0].Id alt="img">
                                                             </a>
                                                         </div>
-                                                        <a class="catg_title" href="#"> @Model[2][0].Title</a>
+                                                        <a class="catg_title GetArticle" data-articleid=@Model[2][0].Id href="#"> @Model[2][0].Title</a>
                                                         <div class="sing_commentbox">
                                                             <p><i class="fa fa-calendar"></i>@Model[2][0].CreatedAt.ToString("dd MMMM yyyy")</p>
                                                             <a href="#"><i class="fa fa-comments"></i>@Model[2][0].Comments.Count</a>
@@ -373,7 +373,7 @@
                                                                         <img src="@imageSrc7" class="GetArticle" data-articleid=@item.Id alt="img">
                                                                     </a>
                                                                     <div class="media-body">
-                                                                        <a class="catg_title" href="single_page.html"> @item.Title</a>
+                                                                        <a class="catg_title GetArticle" data-articleid=@item.Id href="#"> @item.Title</a>
                                                                         <div class="sing_commentbox">
                                                                             <p><i class="fa fa-calendar"></i>@item.CreatedAt.ToString("dd MMMM yyyy")</p>
                                                                             <a href="#"><i class="fa fa-comments"></i>@item.Comments.Count Comments</a>
@@ -407,7 +407,7 @@
                                                             <img alt="img" class="GetArticle" data-articleid=@item.Id src="@imageSrc7">
                                                         </a>
                                                         <div class="media-body">
-                                                            <a href="#" class="catg_title"> @item.Title</a>
+                                                            <a href="#" class="catg_title GetArticle" data-articleid=@item.Id> @item.Title</a>
                                                             <div class="sing_commentbox">
                                                                 <p><i class="fa fa-calendar"></i>@item.CreatedAt.ToString("dd MMMM yyyy")</p>
                                                                 <a href="#"><i class="fa fa-comments"></i>@item.Comments.Count Comments</a>
@@ -444,7 +444,7 @@
                                                             <img alt="img" class="GetArticle" data-articleid=@item.Id src="@imageSrc5">
                                                         </a>
                                                         <div class="media-body">
-                                                            <a href="single_page.html" class="catg_title"> @item.Title</a>
+                                                            <a href="#" data-articleid=@item.Id class="catg_title GetArticle"> @item.Title</a>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -461,221 +461,34 @@
                                     </div>
                                 </div>
                                 <!-- End right bar add -->
-                                <!-- start Tab -->
+                                <!-- start Last Post -->
                                 <div class="single_leftbar wow fadeInDown">
-                                    <!-- Nav tabs -->
-                                    <ul class="nav nav-tabs custom-tabs" role="tablist">
-                                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Популярни</a></li>
-                                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Последни</a></li>
-                                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Коментирани</a></li>
-                                    </ul>
-                                    <div class="tab-content">
-                                        <div role="tabpanel" class="tab-pane fade in active" id="home">
-                                            <ul class="catg3_snav ppost_nav wow fadeInDown">
+                                    <h2><span>Последни публикации</span></h2>
+                                    <div class="singleleft_inner">
+                                        <ul class="catg3_snav ppost_nav wow fadeInDown">
+                                            @foreach (var item in Model[6])
+                                            {
                                                 <li>
+                                                    @{
+                                                        var imageBase645 = Convert.ToBase64String(item.Thumbnail70_70);
+                                                        var imageSrc5 = string.Format("data:image/gif;base64,{0}", imageBase645);
+                                                    }
                                                     <div class="media">
-                                                        <a class="media-left" href="#">
-                                                            <img src="http://lorempixel.com/70/70/" alt="img">
+                                                        <a href="single_page.html" class="media-left">
+                                                            <img alt="img" class="GetArticle" data-articleid=@item.Id src="@imageSrc5">
                                                         </a>
                                                         <div class="media-body">
-                                                            <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
+                                                            <a href="#" class="catg_title GetArticle" data-articleid=@item.Id> @item.Title</a>
                                                         </div>
                                                     </div>
                                                 </li>
-                                                <li>
-                                                    <div class="media">
-                                                        <a class="media-left" href="#">
-                                                            <img src="http://lorempixel.com/70/70/" alt="img">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="media">
-                                                        <a class="media-left" href="#">
-                                                            <img src="http://lorempixel.com/70/70/" alt="img">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="media">
-                                                        <a class="media-left" href="#">
-                                                            <img src="http://lorempixel.com/70/70/" alt="img">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="media">
-                                                        <a class="media-left" href="#">
-                                                            <img src="http://lorempixel.com/70/70/" alt="img">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="media">
-                                                        <a class="media-left" href="#">
-                                                            <img src="http://lorempixel.com/70/70/" alt="img">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="media">
-                                                        <a class="media-left" href="#">
-                                                            <img src="http://lorempixel.com/70/70/" alt="img">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane fade" id="profile">
-                                            <ul class="catg3_snav ppost_nav wow fadeInDown">
-                                                <li>
-                                                    <div class="media">
-                                                        <a class="media-left" href="#">
-                                                            <img src="http://lorempixel.com/70/70/" alt="img">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="media">
-                                                        <a class="media-left" href="#">
-                                                            <img src="http://lorempixel.com/70/70/" alt="img">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="media">
-                                                        <a class="media-left" href="#">
-                                                            <img src="http://lorempixel.com/70/70/" alt="img">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="media">
-                                                        <a class="media-left" href="#">
-                                                            <img src="http://lorempixel.com/70/70/" alt="img">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="media">
-                                                        <a class="media-left" href="#">
-                                                            <img src="http://lorempixel.com/70/70/" alt="img">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane fade" id="messages">
-                                            <ul class="catg3_snav ppost_nav wow fadeInDown">
-                                                <li>
-                                                    <div class="media">
-                                                        <a class="media-left" href="#">
-                                                            <img src="http://lorempixel.com/70/70/" alt="img">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="media">
-                                                        <a class="media-left" href="#">
-                                                            <img src="http://lorempixel.com/70/70/" alt="img">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="media">
-                                                        <a class="media-left" href="#">
-                                                            <img src="http://lorempixel.com/70/70/" alt="img">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="media">
-                                                        <a class="media-left" href="#">
-                                                            <img src="http://lorempixel.com/70/70/" alt="img">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="media">
-                                                        <a class="media-left" href="#">
-                                                            <img src="http://lorempixel.com/70/70/" alt="img">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="media">
-                                                        <a class="media-left" href="#">
-                                                            <img src="http://lorempixel.com/70/70/" alt="img">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="media">
-                                                        <a class="media-left" href="#">
-                                                            <img src="http://lorempixel.com/70/70/" alt="img">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                          }
+                                        </ul>
                                     </div>
                                 </div>
-                                <!-- End Tab -->
+                                <!-- End Last Post -->
                                 <!-- start Blog Archive -->
+                                <!--
                                 <div class="single_leftbar wow fadeInDown">
                                     <h2><span>Архив</span></h2>
                                     <div class="singleleft_inner">
@@ -689,8 +502,10 @@
                                         </div>
                                     </div>
                                 </div>
+                                -->
                                 <!-- End Blog Archive -->
                                 <!-- start Labels -->
+                                <!--
                                 <div class="single_leftbar wow fadeInDown">
                                     <h2><span>Раздели</span></h2>
                                     <div class="singleleft_inner">
@@ -703,6 +518,7 @@
                                         </ul>
                                     </div>
                                 </div>
+                                    -->
                                 <!-- End Labels -->
                                 <!-- start Links -->
                                 <div class="single_leftbar wow fadeInDown">
@@ -744,36 +560,23 @@
                         <div class="single_footer_top wow fadeInLeft">
                             <h2>Популярни публикации</h2>
                             <ul class="catg3_snav ppost_nav">
-                                <li>
-                                    <div class="media">
-                                        <a class="media-left" href="single_page.html">
-                                            <img src="http://lorempixel.com/70/70/" alt="img">
-                                        </a>
-                                        <div class="media-body">
-                                            <a class="catg_title" href="single_page.html"> Aliquam malesuada diam eget turpis varius</a>
+                                @for (int i = 0; i < 3; i++)
+                                {
+                                    <li>
+                                        @{
+                                            var imageBase645 = Convert.ToBase64String(Model[7][i].Thumbnail70_70);
+                                            var imageSrc5 = string.Format("data:image/gif;base64,{0}", imageBase645);
+                                        }
+                                        <div class="media">
+                                            <a href="single_page.html" class="media-left">
+                                                <img alt="img" class="GetArticle" data-articleid=@Model[7][i].Id src="@imageSrc5">
+                                            </a>
+                                            <div class="media-body">
+                                                <a href="#" class="catg_title GetArticle" data-articleid=@Model[7][i].Id> @Model[7][i].Title</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="media">
-                                        <a class="media-left" href="single_page.html">
-                                            <img src="http://lorempixel.com/70/70/" alt="img">
-                                        </a>
-                                        <div class="media-body">
-                                            <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="media">
-                                        <a class="media-left" href="#">
-                                            <img src="http://lorempixel.com/70/70/" alt="img">
-                                        </a>
-                                        <div class="media-body">
-                                            <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                            }
                             </ul>
                         </div>
                     </div>

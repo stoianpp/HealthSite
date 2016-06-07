@@ -281,11 +281,10 @@
 
         public List<ArticleViewModel> GetLastArticles(IQueryable<Article> allArticles)
         {
-            var promo4 = allArticles.Where(z => z.Category == CategoryTypes.Slider)
-                                    .OrderByDescending(x => x.CreatedAt)
+            var last10 = allArticles.OrderByDescending(x => x.CreatedAt)
                                     .Take(10).ToList();
 
-            var last10List = promo4.Select(y => new ArticleViewModel
+            var last10List = last10.Select(y => new ArticleViewModel
             {
                 Id = y.Id,
                 Title = y.Title,

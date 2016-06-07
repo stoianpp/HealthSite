@@ -16,12 +16,12 @@
             <p>@Html.Raw(Model.Content.Replace("\n", "<br/>"))</p>
         </div>
         <br/>
-        <p>Коментари: @Model.Comments.Count</p><br>
+        <p><strong>Коментари: @Model.Comments.Count</strong></p><br>
         <ul style="max-height:300px; overflow-y:scroll" class="list-group">
             @foreach (var comment in Model.Comments)
             {
                 <li class="list-group-item">
-                    <p class="text-right"><i>@comment.CreatedAt.ToString("dd MMMM yyyy"), @comment.Author</i></p>
+                    <p class="text-right blue_comment"><i>@comment.CreatedAt.ToString("dd MMMM yyyy"), @comment.Author</i></p>
                     <p class="list-group-item-text">@comment.Content</p>
                 </li>
             }

@@ -15,6 +15,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
         //////////////SybarMagazine Theme Design and Developed //////////////////////
         //////////// by www.wpfreeware.com======================-->*/
 
+@import url('li-scroller.css');
 @font-face {
   font-family: 'Eddie';
   src: url('fonts/Eddie.eot?#iefix') format('embedded-opentype'), 
@@ -950,6 +951,10 @@ a.logo b{
 
 .indented{
     padding-left: 80px;
+}
+
+.blue_comment{
+    color: forestgreen
 }
 
 /*==========start category archive page==============*/
