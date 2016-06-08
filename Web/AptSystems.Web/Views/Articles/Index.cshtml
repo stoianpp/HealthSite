@@ -564,16 +564,23 @@
                     <div class="col-lg-3 col-md-3 col-sm-6">
                         <div class="single_footer_top wow fadeInRight">
                             <h2>Форма за контакт</h2>
-                            <form class="contact_form">
+
+                            @using (Html.BeginForm("SendMail", "Articles", FormMethod.Post, new { target = "hiddenFrame", @class="contact_form" }))
+                            {
+
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true)
+
                                 <label>Име</label>
-                                <input class="form-control" type="text">
+                                <input class="form-control" type="text" name="name">
                                 <label>Email*</label>
-                                <input class="form-control" type="email">
+                                <input class="form-control" type="email" name="email">
                                 <label>Съобщение*</label>
-                                <textarea class="form-control" cols="30" rows="10"></textarea>
-                                <input class="send_btn" type="submit" value="Send">
-                            </form>
+                                <textarea class="form-control" cols="30" rows="10" name="content"></textarea>
+                                <input class="send_btn" type="submit" onclick="window.location.reload()" value="Изпрати">
+                            }
                         </div>
+                        <iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
                     </div>
                 </div>
                 <div class="footer_bottom">
@@ -620,4 +627,5 @@
             window.location.reload();
         });
     });
+
 </script>

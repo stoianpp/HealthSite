@@ -11,6 +11,7 @@
     using System.IO;
     using System.Linq;
     using System.Net;
+    using System.Net.Mail;
     using System.Web;
     using System.Web.Http.Description;
     using System.Web.Mvc;
@@ -41,6 +42,7 @@
             return View(initialData);
         }
 
+        [Authorize]
         public void DeleteAll()
         {
             foreach (var item in articleRepo.All())
@@ -70,6 +72,7 @@
             return PartialView(articleViewModel);
         }
 
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Article article, HttpPostedFileBase pathOnServer)
@@ -232,6 +235,32 @@
         private bool ArticleExists(Guid id)
         {
             return articleRepo.All().Count(e => e.Id == id) > 0;
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public void SendMail(string name, string email, string content)
+        {
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+                mail.From = new MailAddress("denisspenchev@gmail.com");
+                mail.To.Add("stoianpp2013@gmail.com");
+                mail.Subject = email + " изпраща от сайта zdravetomi.com";
+                mail.Body = content;
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("denisspenchev", "denissp1");
+                SmtpServer.EnableSsl = true;
+            try
+            {
+                SmtpServer.Send(mail);
+                ViewBag.Message("Е-mail изпратен");   
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }
