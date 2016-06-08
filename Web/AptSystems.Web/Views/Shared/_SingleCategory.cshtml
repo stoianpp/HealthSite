@@ -1,0 +1,37 @@
+﻿@model IList<AptSystems.Models.ViewModels.ArticleViewModel>
+
+<div class="wow fadeInDown">
+    <div class="category_title">
+        <a href="#">Семейство</a>
+    </div>
+    <div class="single_category_inner">
+        <ul class="catg3_snav catg5_nav">
+        @foreach (var item in @Model)
+        {
+            {
+                var imageBase647 = Convert.ToBase64String(item.Thumbnail70_70);
+                var imageSrc7 = string.Format("data:image/gif;base64,{0}", imageBase647);
+
+                <li>
+                    <div class="media">
+                        <a href="#" class="media-left">
+                            <img alt="img" class="GetArticle" data-articleid=@item.Id src="@imageSrc7">
+                        </a>
+                        <div class="media-body">
+                            <a href="#" class="catg_title GetArticle" data-articleid=@item.Id> @item.Title</a>
+                            <div class="sing_commentbox">
+                                <p><i class="fa fa-calendar"></i>@item.CreatedAt.ToString("dd MMMM yyyy")</p>
+                                <a href="#"><i class="fa fa-comments"></i>@item.Comments.Count Comments</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            }
+        }
+        </ul>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    }

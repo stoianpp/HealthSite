@@ -21,5 +21,7 @@
         ArticleViewModel GetArticle(string id);
 
         void AddComment(Comment newComment);
+
+        List<ArticleViewModel> GetSingleCategory();
     }
 }

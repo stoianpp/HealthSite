@@ -391,7 +391,7 @@
                                 <!-- start category Five -->
                                 <div class="single_category wow fadeInDown">
                                     <div class="category_title">
-                                        <a href="#">Семейство</a>
+                                        <a href="#" class="GetCategory">Семейство</a>
                                     </div>
                                     <div class="single_category_inner">
                                         <ul class="catg3_snav catg5_nav">
@@ -462,7 +462,7 @@
                                 </div>
                                 <!-- End right bar add -->
                                 <!-- start Last Post -->
-                                <div class="single_leftbar wow fadeInDown">
+                                <div class="single_leftbar wow fadeInDown lastcats">
                                     <h2><span>Последни публикации</span></h2>
                                     <div class="singleleft_inner">
                                         <ul class="catg3_snav ppost_nav wow fadeInDown">
@@ -486,40 +486,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <!-- End Last Post -->
-                                <!-- start Blog Archive -->
-                                <!--
-                                <div class="single_leftbar wow fadeInDown">
-                                    <h2><span>Архив</span></h2>
-                                    <div class="singleleft_inner">
-                                        <div class="blog_archive">
-                                            <form>
-                                                <select>
-                                                    <option value="">2015</option>
-                                                    <option value="">2014</option>
-                                                </select>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                -->
-                                <!-- End Blog Archive -->
-                                <!-- start Labels -->
-                                <!--
-                                <div class="single_leftbar wow fadeInDown">
-                                    <h2><span>Раздели</span></h2>
-                                    <div class="singleleft_inner">
-                                        <ul class="label_nav">
-                                            <li><a href="#">Здраве</a></li>
-                                            <li><a href="#">Хранене</a></li>
-                                            <li><a href="#">Медицина</a></li>
-                                            <li><a href="#">Фитнес</a></li>
-                                            <li><a href="#">Семейство</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                    -->
-                                <!-- End Labels -->
+                                
                                 <!-- start Links -->
                                 <div class="single_leftbar wow fadeInDown">
                                     <h2><span>Връзки</span></h2>
@@ -632,8 +599,18 @@
         $('.GetArticle').on('click', function (e) {
             e.preventDefault();
             var id = $(this).data("articleid");
-            $.get('@Url.Action("_SingleArticle")', { id: id }, function (result) {
+            $.get('@Url.Action("_SingleArticle", "Articles")', { id: id }, function (result) {
                 $('#myCarousel').html(result);
+                $('.thumbnail_slider_area,.single_category,.lastcats').hide();
+            });
+        });
+
+        $('.GetCategory').on('click', function (e) {
+            e.preventDefault();
+            var category = $(this).data("category");
+            $.get('@Url.Action("_SingleCategory","Articles")', function (result) {
+                $('#myCarousel').html(result);
+                $('.thumbnail_slider_area,.single_category,.lastcats').hide();
             });
         });
     });

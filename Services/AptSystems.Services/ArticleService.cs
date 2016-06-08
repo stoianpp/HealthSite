@@ -324,5 +324,25 @@
 
             return commented10List;
         }
+
+        public List<ArticleViewModel> GetSingleCategory()
+        {
+            var singleCat = repo.All().Where(z => z.Category == CategoryTypes.Family)
+                                    .OrderByDescending(x => x.CreatedAt)
+                                    .Take(6).ToList();
+
+            var singleCatList = singleCat.Select(y => new ArticleViewModel
+            {
+                Id = y.Id,
+                Title = y.Title.Length > 47 ? y.Title.Substring(0, 47) + "..." : y.Title,
+                Content = y.Content.Length > 100 ? y.Content.Substring(0, 199) + "..." : y.Content,
+                CreatedAt = y.CreatedAt,
+                Comments = y.Comments,
+                Image395_396 = y.Image,
+                Thumbnail70_70 = y.Tumbnail,
+            }).ToList();
+
+            return singleCatList;
+        }
     }
 }

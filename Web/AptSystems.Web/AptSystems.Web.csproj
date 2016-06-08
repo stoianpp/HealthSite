@@ -389,6 +389,7 @@
     <Content Include="Views\Articles\Index.cshtml" />
     <Content Include="Views\Articles\Create.cshtml" />
     <Content Include="Views\Shared\_SingleArticle.cshtml" />
+    <Content Include="Views\Shared\_SingleCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
