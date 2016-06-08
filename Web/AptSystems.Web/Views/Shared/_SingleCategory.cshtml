@@ -1,8 +1,9 @@
 ﻿@model IList<AptSystems.Models.ViewModels.ArticleViewModel>
+@using AptSystems.Models.ViewModels;
 
 <div class="wow fadeInDown">
     <div class="category_title">
-        <a href="#">Семейство</a>
+        <a href="#">@Model[0].Category.GetDisplayName()</a>
     </div>
     <div class="single_category_inner">
         <ul class="catg3_snav catg5_nav">

@@ -325,11 +325,11 @@
             return commented10List;
         }
 
-        public List<ArticleViewModel> GetSingleCategory()
+        public List<ArticleViewModel> GetSingleCategory(CategoryTypes category)
         {
-            var singleCat = repo.All().Where(z => z.Category == CategoryTypes.Family)
+            var singleCat = repo.All().Where(z => z.Category == category)
                                     .OrderByDescending(x => x.CreatedAt)
-                                    .Take(6).ToList();
+                                    .Take(10).ToList();
 
             var singleCatList = singleCat.Select(y => new ArticleViewModel
             {
@@ -337,6 +337,7 @@
                 Title = y.Title.Length > 47 ? y.Title.Substring(0, 47) + "..." : y.Title,
                 Content = y.Content.Length > 100 ? y.Content.Substring(0, 199) + "..." : y.Content,
                 CreatedAt = y.CreatedAt,
+                Category = y.Category,
                 Comments = y.Comments,
                 Image395_396 = y.Image,
                 Thumbnail70_70 = y.Tumbnail,

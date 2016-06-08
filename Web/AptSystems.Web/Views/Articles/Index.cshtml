@@ -1,4 +1,5 @@
 ﻿@model List<List<AptSystems.Models.ViewModels.ArticleViewModel>>
+@using AptSystems.Models;
 
 @{
     ViewBag.Title = "Zdravetomi.com";
@@ -31,12 +32,12 @@
                             </div>
                             <div id="navbar" class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav custom_nav">
-                                    <li class=""><a href="index.html">Начало</a></li>
-                                    <li><a href="#">Здраве</a></li>
-                                    <li><a href="category-archive.html">Хранене</a></li>
-                                    <li><a href="category-archive.html">Фитнес</a></li>
-                                    <li><a href="category-archive.html">Медицина</a></li>
-                                    <li><a href="#">Семейство</a></li>
+                                    <li>@Html.ActionLink("Начало", "Index", "Articles", null)</li>
+                                    <li><a class="GetCategory" data-category="@CategoryTypes.Health" href="#">Здраве</a></li>
+                                    <li><a class="GetCategory" data-category="@CategoryTypes.Nutrition" href="#">Хранене</a></li>
+                                    <li><a class="GetCategory" data-category="@CategoryTypes.Fitness" href="#">Фитнес</a></li>
+                                    <li><a class="GetCategory" data-category="@CategoryTypes.Medicine" href="#">Медицина</a></li>
+                                    <li><a class="GetCategory" data-category="@CategoryTypes.Family" href="#">Семейство</a></li>
                                     <li>@Html.Partial("_LoginPartial")</li>
                                 </ul>
                             </div><!--/.nav-collapse -->
@@ -61,7 +62,7 @@
                     <div class="logo_area">
                         <!-- for your image logo -->
                         <!---->
-                        <a class="logo" href="index.html">
+                        <a class="logo getToStart" href="#">
                             <img src="~/Images/logo3.jpg" alt="logo">
                         </a>
 
@@ -71,7 +72,7 @@
                       <span><b>Изкуството да живеем</b><strong>... добре</strong></span>
                       </a>-->
                     </div>
-                    <div class="top_addarea">
+                    <div class="top_addarea getToStart">
                         <a href="#"><img src="~/Images/top4.jpg" alt="img"></a>
                     </div>
                 </div>
@@ -219,7 +220,7 @@
                                 <!-- start category one -->
                                 <div class="single_category wow fadeInDown">
                                     <div class="category_title">
-                                        <a href="category-archive.html">Здраве</a>
+                                        <a class="GetCategory" data-category="@CategoryTypes.Health" href="#">Здраве</a>
                                     </div>
                                     <div class="single_category_inner">
                                         <ul class="catg_nav">
@@ -247,7 +248,7 @@
                                 <!-- start category Two -->
                                 <div class="single_category  wow fadeInDown">
                                     <div class="category_title">
-                                        <a href="category-archive.html">Хранене</a>
+                                        <a class="GetCategory" data-category="@CategoryTypes.Nutrition" href="#">Хранене</a>
                                     </div>
                                     <div class="single_category_inner">
                                         <ul class="catg_nav catg_nav2">
@@ -280,7 +281,7 @@
                                         <!-- start category Three -->
                                         <div class="single_category">
                                             <div class="category_title">
-                                                <a href="single_page.html">Медицина</a>
+                                                <a class="GetCategory" data-category="@CategoryTypes.Medicine" href="#">Медицина</a>
                                             </div>
                                             <div class="single_category_inner">
                                                 <ul class="catg_nav catg_nav3">
@@ -335,7 +336,7 @@
                                         <!-- start category Four -->
                                         <div class="single_category">
                                             <div class="category_title">
-                                                <a href="#">Фитнес</a>
+                                                <a class="GetCategory" data-category="@CategoryTypes.Fitness" href="#">Фитнес</a>
                                             </div>
                                             <div class="single_category_inner">
                                                 <ul class="catg_nav catg_nav3">
@@ -391,7 +392,7 @@
                                 <!-- start category Five -->
                                 <div class="single_category wow fadeInDown">
                                     <div class="category_title">
-                                        <a href="#" class="GetCategory">Семейство</a>
+                                        <a class="GetCategory" data-category="@CategoryTypes.Family" href="#">Семейство</a>
                                     </div>
                                     <div class="single_category_inner">
                                         <ul class="catg3_snav catg5_nav">
@@ -492,9 +493,9 @@
                                     <h2><span>Връзки</span></h2>
                                     <div class="singleleft_inner">
                                         <ul class="link_nav">
-                                            <li><a href="#">Начало</a></li>
-                                            <li><a href="#">Facebook</a></li>
-                                            <li><a href="#">Карта на сайта</a></li>
+                                            <li><a href="#" class="getToStart">Начало</a></li>
+                                            <li><a href="#">Facebook</a></li> <!--TODO: be implemented-->
+                                            <li><a href="#">Карта на сайта</a></li> <!--TODO: be implemented-->
                                         </ul>
                                     </div>
                                 </div>
@@ -551,12 +552,12 @@
                         <div class="single_footer_top wow fadeInRight">
                             <h2>Категории</h2>
                             <ul class="footer_labels">
-                                <li><a href="#">Начало</a></li>
-                                <li><a href="#">Здраве</a></li>
-                                <li><a href="#">Хранене</a></li>
-                                <li><a href="#">Медицина</a></li>
-                                <li><a href="#">Фитнес</a></li>
-                                <li><a href="#">Семейство</a></li>
+                                <li><a class="getToStart" href="#">Начало</a></li>
+                                <li><a class="GetCategory" data-category="@CategoryTypes.Health" href="#">Здраве</a></li>
+                                <li><a class="GetCategory" data-category="@CategoryTypes.Nutrition" href="#">Хранене</a></li>
+                                <li><a class="GetCategory" data-category="@CategoryTypes.Medicine" href="#">Медицина</a></li>
+                                <li><a class="GetCategory" data-category="@CategoryTypes.Fitness" href="#">Фитнес</a></li>
+                                <li><a class="GetCategory" data-category="@CategoryTypes.Family" href="#">Семейство</a></li>
                             </ul>
                         </div>
                     </div>
@@ -608,10 +609,15 @@
         $('.GetCategory').on('click', function (e) {
             e.preventDefault();
             var category = $(this).data("category");
-            $.get('@Url.Action("_SingleCategory","Articles")', function (result) {
+            $.get('@Url.Action("_SingleCategory","Articles")', {category : category}, function (result) {
                 $('#myCarousel').html(result);
                 $('.thumbnail_slider_area,.single_category,.lastcats').hide();
             });
+        });
+
+        $('.getToStart').on('click', function (e) {
+            e.preventDefault();
+            window.location.reload();
         });
     });
 </script>

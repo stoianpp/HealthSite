@@ -1,6 +1,6 @@
 ﻿@model AptSystems.Models.ViewModels.ArticleViewModel
 
-<div class="container">
+<div class="container wow fadeInDown">
     <div class="col-xs-6">
         <h1>
             @Model.Title
@@ -21,7 +21,7 @@
             @foreach (var comment in Model.Comments)
             {
                 <li class="list-group-item">
-                    <p class="text-right blue_comment"><i>@comment.CreatedAt.ToString("dd MMMM yyyy"), @comment.Author</i></p>
+                    <p class="text-right blue_comment"><i>@comment.CreatedAt.ToString("dd MMMM yyyy"), @comment.Author.Substring(0,comment.Author.IndexOf("@"))</i></p>
                     <p class="list-group-item-text">@comment.Content</p>
                 </li>
             }

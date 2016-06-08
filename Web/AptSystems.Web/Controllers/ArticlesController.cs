@@ -64,9 +64,9 @@
             return PartialView(articleViewModel);
         }
 
-        public ActionResult _SingleCategory()
+        public ActionResult _SingleCategory(CategoryTypes category)
         {
-            var articleViewModel = service.GetSingleCategory();
+            var articleViewModel = service.GetSingleCategory(category);
             return PartialView(articleViewModel);
         }
 

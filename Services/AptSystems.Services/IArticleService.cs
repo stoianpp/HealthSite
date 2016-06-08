@@ -22,6 +22,6 @@
 
         void AddComment(Comment newComment);
 
-        List<ArticleViewModel> GetSingleCategory();
+        List<ArticleViewModel> GetSingleCategory(CategoryTypes category);
     }
 }
