@@ -26,8 +26,8 @@
                 </li>
             }
         </ul>
-        <div>Публикувай нов коментар</div>
-        @using (Html.BeginForm("AddComment", "Articles", FormMethod.Post, new { target = "hiddenFrame" }))
+        <div>Публикувай нов коментар (само за регистрирани потребители)</div>
+        @using (Html.BeginForm("AddComment", "Articles", FormMethod.Post))
         {
 
             @Html.AntiForgeryToken()
@@ -40,13 +40,11 @@
                 </div>
             </fieldset>
 
-            <button class="btn-success" type="submit" onclick="$('#openB').click();">Изпрати</button>
+            <button class="btn-success" type="submit" onclick="location.reload();">Изпрати</button>
         }
     </div>
-    <div id="message"></div>
-    <iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
 </div>
-
+<!--
 <div class="container">
     <h2 style="visibility: hidden">Modal Example</h2>
     <button style="visibility: hidden" type="button" id="openB" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
@@ -68,13 +66,9 @@
         </div>
     </div>
 </div>
+-->
 
 @section Scripts {
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    <script>
-        setTimeout(function () {
-            $("#message").fadeOut()
-        }, 5000)
-    </script>
 }

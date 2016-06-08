@@ -599,6 +599,26 @@
                 </div>
             </footer>
         </div><!-- /.box_wrapper -->
+        <div class="container">
+            <h2 style="visibility: hidden">Modal Example</h2>
+            <button style="visibility: hidden" type="button" id="openB" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="titleM">Резултат</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p id="textM"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div><!-- /.container -->
 
 <script src="~/Scripts/jquery-1.10.2.js"></script>
@@ -626,6 +646,13 @@
             e.preventDefault();
             window.location.reload();
         });
-    });
 
+        switch (@ViewBag.Status) {
+            case 1: $("#textM").html("Успешен запис"); $('#openB').click();break;
+            case 2: $("#textM").html("Невалидни данни. Неуспешен запис на коментар");$('#openB').click(); break;
+            case 3: $("#textM").html("Успешен запис"); $('#openB').click();break;
+            case 4: $("#textM").html("Неуспешно изпращане на е-mail"); $('#openB').click();break;
+        }
+
+    });
 </script>

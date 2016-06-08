@@ -35,22 +35,23 @@
         }
 
 
-        public ActionResult Index()
+        public ActionResult Index(int commentStatus=0)
         {
             var initialData = new List<List<ArticleViewModel>>();
             initialData = service.GetInitialData();
+            ViewBag.Status = commentStatus;
             return View(initialData);
         }
 
-        [Authorize]
-        public void DeleteAll()
-        {
-            foreach (var item in articleRepo.All())
-            {
-                articleRepo.Delete(item);
-            }
-            articleRepo.SaveChanges();
-        }
+        //[Authorize]
+        //public void DeleteAll()
+        //{
+        //    foreach (var item in articleRepo.All())
+        //    {
+        //        articleRepo.Delete(item);
+        //    }
+        //    articleRepo.SaveChanges();
+        //}
 
         public ActionResult Create()
         {
@@ -104,7 +105,7 @@
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public void AddComment(Comment newComment)
+        public ActionResult AddComment(Comment newComment)
         {
             if (this.ModelState.IsValid)
             {
@@ -114,13 +115,14 @@
                     newComment.CreatedAt = DateTime.Now;
                     service.AddComment(newComment);
                     ModelState.Clear();
-                    ViewBag.Message = "Коментарът е записан успешно";
+                    return RedirectToAction("Index", new { commentStatus = 1 });
                 }
                 catch (Exception ex)
                 {
-                    ViewBag.Message = "ERROR:" + ex.Message.ToString();
+                    return RedirectToAction("Index", new { commentStatus = 2 });
                 }
             }
+            else return RedirectToAction("Index", new { commentStatus = 2 });
         }
 
         // GET: api/Articles
@@ -240,7 +242,7 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public void SendMail(string name, string email, string content)
+        public ActionResult SendMail(string name, string email, string content)
         {
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
@@ -255,11 +257,11 @@
             try
             {
                 SmtpServer.Send(mail);
-                ViewBag.Message("Е-mail изпратен");   
+                return RedirectToAction("Index", new { commentStatus = 3 });
             }
             catch (Exception ex)
             {
-
+                return RedirectToAction("Index", new { commentStatus = 4 });
             }
         }
     }
