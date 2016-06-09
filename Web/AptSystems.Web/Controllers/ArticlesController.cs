@@ -43,16 +43,17 @@
             return View(initialData);
         }
 
-        //[Authorize]
-        //public void DeleteAll()
-        //{
-        //    foreach (var item in articleRepo.All())
-        //    {
-        //        articleRepo.Delete(item);
-        //    }
-        //    articleRepo.SaveChanges();
-        //}
+        [Authorize(Roles = "Admin")]
+        public void DeleteAll()
+        {
+            foreach (var item in articleRepo.All())
+            {
+                articleRepo.Delete(item);
+            }
+            articleRepo.SaveChanges();
+        }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.Categories = (CategoryTypes[])Enum.GetValues(typeof(CategoryTypes));
@@ -73,7 +74,7 @@
             return PartialView(articleViewModel);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Article article, HttpPostedFileBase pathOnServer)
@@ -147,6 +148,7 @@
         }
 
         // PUT: api/Articles/5
+        [Authorize(Roles = "Admin")]
         [ResponseType(typeof(void))]
         public HttpStatusCode PutArticle(Guid id, Article article)
         {
@@ -181,6 +183,7 @@
         }
 
         // POST: api/Articles
+        [Authorize(Roles = "Admin")]
         [ResponseType(typeof(Article))]
         public HttpStatusCode PostArticle(Article article)
         {
@@ -210,6 +213,7 @@
         }
 
         // DELETE: api/Articles/5
+        [Authorize(Roles = "Admin")]
         [ResponseType(typeof(Article))]
         public HttpStatusCode DeleteArticle(Guid id)
         {
