@@ -10,4 +10,4 @@ Navigation between the index page, single article and category views is availabl
 
 All options are available and working. The project can be started with VS 2015, for it is still not uploaded ona hosting providor (database is on localDB), so no need of SQL server running.
 
-Still to be implemented: -Articules paging in category view -Roles authentication for admin functionalities -Bulertin enrollment option ...uploading to Azure
+Still to be implemented: Articles paging in Category view and Bulertin enrollment option ...uploading to Azure
