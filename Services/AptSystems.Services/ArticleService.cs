@@ -11,10 +11,14 @@
     using System.Drawing.Imaging;
     using System.IO;
     using System.Linq;
+    using System.Net.Mail;
+    using System.Text;
     using System.Web;
 
     public class ArticleService : IArticleService
     {
+        private const int pageSize = 2;
+
         private IRepository<Article> repo;
         private IRepository<Comment> commentsRepo;
         private DbContext db;
@@ -95,7 +99,7 @@
             article.Id = Guid.NewGuid();
             Image byteFile = Image.FromStream(pathOnServer.InputStream, true, true);
             article.Image = ImageToByteArray(byteFile);
-            article.Tumbnail = ImageToByteArray(FixedSize(byteFile, new Size(70,70)));
+            article.Tumbnail = ImageToByteArray(FixedSize(byteFile, new Size(70, 70)));
             article.CreatedAt = DateTime.Now;
             repo.Add(article);
             db.SaveChanges();
@@ -171,7 +175,7 @@
             {
                 Id = y.Id,
                 Title = y.Title,
-                Content = y.Content.Substring(0,100)+"...",
+                Content = y.Content.Substring(0, 100) + "...",
                 CreatedAt = y.CreatedAt,
                 Comments = y.Comments,
                 Image395_396 = y.Image,
@@ -223,7 +227,7 @@
             {
                 Id = y.Id,
                 Title = y.Title.Length > 47 ? y.Title.Substring(0, 47) + "..." : y.Title,
-                Content = y.Content.Length>100? y.Content.Substring(0,199)+"...": y.Content,
+                Content = y.Content.Length > 100 ? y.Content.Substring(0, 199) + "..." : y.Content,
                 CreatedAt = y.CreatedAt,
                 Comments = y.Comments,
                 Image395_396 = y.Image,
@@ -314,7 +318,7 @@
             var commented10List = commented10.Select(y => new ArticleViewModel
             {
                 Id = y.Id,
-                Title = y.Title.Length > 50? y.Title.Substring(0, 50)+"...": y.Title, 
+                Title = y.Title.Length > 50 ? y.Title.Substring(0, 50) + "..." : y.Title,
                 Content = y.Content,
                 CreatedAt = y.CreatedAt,
                 Comments = y.Comments,
@@ -345,5 +349,55 @@
 
             return singleCatList;
         }
+
+        public void SendMail(string name, string email, string content)
+        {
+            string to = "stoianpp2013@gmail.com";
+            string from = email;
+            MailMessage message = new MailMessage(from, to);
+
+            string mailbody = content;
+            message.Subject = "email from ZDRAVETOMI.COM";
+            message.Body = mailbody;
+            message.BodyEncoding = Encoding.UTF8;
+            message.IsBodyHtml = true;
+            SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+            System.Net.NetworkCredential basicCredential1 = new
+            System.Net.NetworkCredential("denisspenchev", "denissp1");
+            client.EnableSsl = true;
+            client.UseDefaultCredentials = false;
+            client.Credentials = basicCredential1;
+            client.Send(message);
+        }
+
+        public List<ArticleViewModel> GetCategoryPage(int page, string filterString, CategoryTypes category)
+        {
+            var pageRecords = repo.All();
+            if (category != CategoryTypes.All)
+                pageRecords = pageRecords.Where(x => x.Category == category);
+
+            if (filterString != "ALL")
+                pageRecords = pageRecords.Where(x => x.Title.Contains(filterString));
+
+            var result = pageRecords
+                .OrderByDescending(x => x.CreatedAt)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList()
+                .Select(y => new ArticleViewModel
+                {
+                    Id = y.Id,
+                    Title = y.Title.Length > 47 ? y.Title.Substring(0, 47) + "..." : y.Title,
+                    Content = y.Content.Length > 100 ? y.Content.Substring(0, 199) + "..." : y.Content,
+                    CreatedAt = y.CreatedAt,
+                    Category = y.Category,
+                    Comments = y.Comments,
+                    Image395_396 = y.Image,
+                    Thumbnail70_70 = y.Tumbnail,
+                }).ToList();
+
+            return result;
+        }
+
     }
 }

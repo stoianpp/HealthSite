@@ -1,7 +1,7 @@
 ﻿@model IList<AptSystems.Models.ViewModels.ArticleViewModel>
 @using AptSystems.Models.ViewModels;
 
-<div class="wow fadeInDown">
+<div id="content" class="wow fadeInDown">
     <div class="category_title">
         <a href="#">@Model[0].Category.GetDisplayName()</a>
     </div>
@@ -29,10 +29,43 @@
                 </li>
             }
         }
-        </ul>
+        </ul><br>
+
     </div>
+    <button id="btnHome" class="btn-success" onclick="sendRequest(0)" data-page=@ViewBag.pageIndex data-category=@ViewBag.Category><<</button>&nbsp;&nbsp;
+    <button id="btnPrevious" class="btn-success" onclick="sendRequest(1)"><</button>
+    &nbsp; Page @ViewBag.PageIndex &nbsp;
+    <input type="button" id="btnNext" onclick="sendRequest(2)" class="btn-success" value=">">&nbsp;&nbsp;
+    <input type="button" id="btnEnd" class="btn-success" onclick="sendRequest(3)" value=">>">
 </div>
 
-@section Scripts {
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    }
+
+
+    <script>
+            var targetPage = parseInt($("#btnHome").data("page"));
+            var categoryIn = $("#btnHome").data("category");
+            console.log(targetPage, categoryIn);
+                    //$("#btnNext").on("click", function () { console.log("1234") });
+                    //$("#btnNext").on('click', function () { console.log(1); sendRequest(2); });
+            
+
+            function sendRequest(buttonIndex) {
+                        switch (buttonIndex) {
+                            case 0: targetPage = 1; break;
+                            case 1: targetPage--; break;
+                            case 2: targetPage++; break;
+                            case 0: targetPage = -1; break;
+                        }
+                        var urlAddress = '_SingleCategory';
+                        $.ajax({
+                            url: urlAddress,
+                            data: {
+                                page: targetPage,
+                                category: categoryIn,
+                            },
+                            success: function (response) {
+                                $("#content").html(response);
+                            }
+                        });
+                    };
+    </script>

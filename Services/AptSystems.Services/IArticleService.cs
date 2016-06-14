@@ -23,5 +23,9 @@
         void AddComment(Comment newComment);
 
         List<ArticleViewModel> GetSingleCategory(CategoryTypes category);
+
+        void SendMail(string name, string email, string content);
+
+        List<ArticleViewModel> GetCategoryPage(int page = 1, string filterString = "ALL", CategoryTypes category = CategoryTypes.All);
     }
 }

@@ -23,6 +23,8 @@ namespace AptSystems.Models
         Beauty,
 
         [Display(Name = "Слайдер 668-328")]
-        Slider
+        Slider,
+
+        All
     }
 }

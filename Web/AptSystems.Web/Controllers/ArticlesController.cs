@@ -12,6 +12,7 @@
     using System.Linq;
     using System.Net;
     using System.Net.Mail;
+    using System.Text;
     using System.Web;
     using System.Web.Http.Description;
     using System.Web.Mvc;
@@ -68,9 +69,12 @@
             return PartialView(articleViewModel);
         }
 
-        public ActionResult _SingleCategory(CategoryTypes category)
+        public ActionResult _SingleCategory(CategoryTypes category, int page = 1)
         {
-            var articleViewModel = service.GetSingleCategory(category);
+            var articleViewModel = service.GetCategoryPage(page,"ALL", category);
+            //var articleViewModel = service.GetSingleCategory(category);
+            ViewBag.PageIndex = page;
+            ViewBag.Category = category;
             return PartialView(articleViewModel);
         }
 
@@ -247,20 +251,11 @@
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SendMail(string name, string email, string content)
-        {
-                MailMessage mail = new MailMessage();
-                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-
-                mail.From = new MailAddress("denisspenchev@gmail.com");
-                mail.To.Add("stoianpp2013@gmail.com");
-                mail.Subject = email + " изпраща от сайта zdravetomi.com";
-                mail.Body = content;
-                SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("denisspenchev", "denissp1");
-                SmtpServer.EnableSsl = true;
+        {           
             try
             {
-                SmtpServer.Send(mail);
+                service.SendMail(name, email, content);
+                
                 return RedirectToAction("Index", new { commentStatus = 3 });
             }
             catch (Exception ex)
