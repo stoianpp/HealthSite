@@ -27,5 +27,7 @@
         void SendMail(string name, string email, string content);
 
         List<ArticleViewModel> GetCategoryPage(int page = 1, string filterString = "ALL", CategoryTypes category = CategoryTypes.All);
+
+        int GetLastPage(string filterString, CategoryTypes category);
     }
 }

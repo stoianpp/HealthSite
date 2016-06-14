@@ -71,6 +71,9 @@
 
         public ActionResult _SingleCategory(CategoryTypes category, int page = 1)
         {
+            if (page == 0) page++;
+            else if (page == -1) page = service.GetLastPage("ALL",category);
+
             var articleViewModel = service.GetCategoryPage(page,"ALL", category);
             //var articleViewModel = service.GetSingleCategory(category);
             ViewBag.PageIndex = page;

@@ -266,6 +266,12 @@ a.logo b{
   background-color: #1b1a1a;
 }
 
+.link-disable{
+    pointer-events:none;
+    color: grey;
+    cursor: default
+}
+
 /*news ticker*/
 .news_sticker li a{
 	display: inline-block;

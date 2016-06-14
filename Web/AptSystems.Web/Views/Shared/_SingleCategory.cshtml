@@ -45,18 +45,15 @@
             var targetPage = parseInt($("#btnHome").data("page"));
             var categoryIn = $("#btnHome").data("category");
             console.log(targetPage, categoryIn);
-                    //$("#btnNext").on("click", function () { console.log("1234") });
-                    //$("#btnNext").on('click', function () { console.log(1); sendRequest(2); });
-            
 
             function sendRequest(buttonIndex) {
                         switch (buttonIndex) {
                             case 0: targetPage = 1; break;
                             case 1: targetPage--; break;
                             case 2: targetPage++; break;
-                            case 0: targetPage = -1; break;
+                            case 3: targetPage = -1; break;
                         }
-                        var urlAddress = '_SingleCategory';
+                        var urlAddress = '@Url.Action("_SingleCategory","Articles")';
                         $.ajax({
                             url: urlAddress,
                             data: {
@@ -67,5 +64,13 @@
                                 $("#content").html(response);
                             }
                         });
-                    };
+            };
+
+            @if (ViewBag.PageIndex == 1){
+                @:$("#btnPrevious,#btnHome").prop('disabled', true);;
+            }
+
+            @if (Model.Count() < 10){
+                @:$("#btnNext, #btnEnd").prop('disabled', true);;
+            }
     </script>

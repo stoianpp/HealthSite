@@ -17,7 +17,7 @@
 
     public class ArticleService : IArticleService
     {
-        private const int pageSize = 2;
+        private const int pageSize = 10;
 
         private IRepository<Article> repo;
         private IRepository<Comment> commentsRepo;
@@ -397,6 +397,22 @@
                 }).ToList();
 
             return result;
+        }
+
+        public int GetLastPage(string filterString, CategoryTypes category)
+        {
+            var pageRecords = repo.All();
+            if (category != CategoryTypes.All)
+                pageRecords = pageRecords.Where(x => x.Category == category);
+
+            if (filterString != "ALL")
+                pageRecords = pageRecords.Where(x => x.Title.Contains(filterString));
+
+            int recosNumber = pageRecords.Count();
+            int page = recosNumber / pageSize;
+            if (recosNumber % pageSize > 0) page++;
+
+            return page;
         }
 
     }
